@@ -1,0 +1,15 @@
+.MenuItem {
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.MenuItem:hover {
+  transform: scale(1.02);
+  transition: transform .4s ease-in-out;
+  background: #efecec;
+}
+
+.MenuItem:active {
+  transform: scale(1);
+  transition: transform .4s ease-in-out;
+}

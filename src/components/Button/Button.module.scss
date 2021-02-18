@@ -1,0 +1,17 @@
+@import '../vars/vars';
+
+.button {
+  color: var(--button-main-color);
+  background: var(--button-secondary-color);
+  padding: 5px;
+  border-radius: 2px;
+  transition: background-color .3s ease-in-out;
+}
+
+.button:hover {
+  background: var(--button-secondary-color-hover);
+}
+
+.button:active {
+  background: var(--button-secondary-color);
+}

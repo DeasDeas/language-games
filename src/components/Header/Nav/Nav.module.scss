@@ -1,0 +1,25 @@
+.Nav {
+  grid-area: nav;
+  justify-self: start;
+
+  &List {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    color: #8c8888;
+    font-size: 24px;
+
+
+    &__item {
+      cursor: pointer;
+    }
+
+    &__item:hover {
+      color: #007bff;
+    }
+
+    &__item + &__item {
+      margin: 0 0 0 25px;
+    }
+  }
+}

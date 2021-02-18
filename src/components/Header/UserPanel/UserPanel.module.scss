@@ -1,0 +1,27 @@
+.UserPanel {
+  grid-area: user;
+  display: flex;
+  height: 100%;
+  max-width: 400px;
+  min-width: 20px;
+  align-self: flex-end;
+  align-items: center;
+  justify-self: end;
+  justify-content: space-between;
+}
+
+.UsePanelButton {
+  padding: 10px;
+
+  &_green {
+    background: #29a753 !important;
+  }
+
+  &_green:hover {
+    background: #7edb9e !important;
+  }
+
+  &_green:active {
+    background: #29a753 !important;
+  }
+}

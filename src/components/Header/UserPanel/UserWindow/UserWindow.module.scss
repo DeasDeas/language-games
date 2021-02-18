@@ -1,0 +1,39 @@
+.userWrapper {
+  display: flex;
+  color: #8c8888;
+  margin: auto;
+}
+
+.userImage {
+  height: 50px;
+  border-radius: 50%;
+  margin: 5px;
+}
+
+.userInfoWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.userName {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.logout {
+  font-size: 16px;
+  padding: 0;
+  text-align: left;
+  color: #c34040;
+}
+
+.logout:hover {
+  color: #253d75;
+  text-decoration: underline;
+}
