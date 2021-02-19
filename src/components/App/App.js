@@ -17,7 +17,7 @@ import { GameWrapper } from "../GameWrapper/GameWrapper";
 
 const App = () => {
   const dispatch = useDispatch();
-  const authCheckStatus = useSelector(state => {state.auth.status});
+  const authCheckStatus = useSelector(state => state.auth.status);
   const isAuthenticated = useSelector(state => state.auth.authenticated);
 
   useEffect(() => {

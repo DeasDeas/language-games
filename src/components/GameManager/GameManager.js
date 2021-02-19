@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SetCard } from "../SetCard/SetCard";
 import classes from "./GameManager.module.css";
 import { PictureCard } from "../PictureCard/PictureCard";
 import { WordCard } from "../WordCard/WordCard";
 import {
-  readGameState,
   switchSet,
   completeSet,
-  redoSet, getData,
+  redoSet,
 } from "../../features/game/gameSlice";
 
 export const GameManager = (props) => {

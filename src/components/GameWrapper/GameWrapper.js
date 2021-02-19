@@ -4,7 +4,7 @@ import { getData, readGameState } from "../../features/game/gameSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "nanoid";
 
-export const GameWrapper = (props) => {
+export const GameWrapper = () => {
   let dispatch = useDispatch();
   const [redFromLocal, setRedFromLocal] = useState(false);
 
@@ -86,7 +86,7 @@ export const GameWrapper = (props) => {
     } else {
       window.sessionStorage.setItem(sessionInstance, JSON.stringify(game));
     }
-  });
+  }, [getSessionInstance, userId, currentSessionId, redFromLocal, game, dispatch]);
 
   return redFromLocal ? (
     <GameManager refreshHandler={refreshHandler} />

@@ -28,3 +28,5 @@ public/fonts/
 *.svg
 /languagegames - Ярлык.lnk
 /package-lock.json
+!/src/index.css
+!/src/normalize.css
