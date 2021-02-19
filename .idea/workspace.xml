@@ -16,17 +16,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="478791fc-9a99-4561-a0ef-72d5602e7793" name="Default Changelist" comment="Update dev dependencies">
-      <change afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/normalize.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/languagegames.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/languagegames.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/GameManager/GameManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GameManager/GameManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/GameWrapper/GameWrapper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GameWrapper/GameWrapper.js" afterDir="false" />
-    </list>
+    <list default="true" id="478791fc-9a99-4561-a0ef-72d5602e7793" name="Default Changelist" comment="Update dev dependencies" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -194,7 +184,7 @@
       <workItem from="1613772074847" duration="453000" />
       <workItem from="1613773067037" duration="193000" />
       <workItem from="1613773289092" duration="50000" />
-      <workItem from="1613773350988" duration="2963000" />
+      <workItem from="1613773350988" duration="3197000" />
     </task>
     <task id="LOCAL-00001" summary="startpoint">
       <created>1613658883474</created>
@@ -224,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613773384893</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Update dev dependencies">
+      <created>1613777339668</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1613777339668</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,7 +255,8 @@
     <MESSAGE value="startpoint" />
     <MESSAGE value="Implemented reading from sessionStorage in GameManager" />
     <MESSAGE value="Update dev dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update dev dependencies" />
+    <MESSAGE value="Fixed auth problems" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed auth problems" />
   </component>
   <component name="WindowStateProjectService">
     <state x="658" y="410" key="#ESLint" timestamp="1612648341031">
