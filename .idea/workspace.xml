@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="478791fc-9a99-4561-a0ef-72d5602e7793" name="Default Changelist" comment="Update dev dependencies">
+      <change beforePath="$PROJECT_DIR$/src/components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="SCSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="develop" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/components/App/App.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/features/game/gameSlice.js" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="ProjectId" id="1nnJG0f9ZhuNO8FD2JdoLxocDM1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="NewWatcherDialog.advanced.open" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="D:/wamp64/www/languagegames" />
+    <property name="list.type.of.created.stylesheet" value="SCSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\Михаил\WebstormProjects\languagegames\node_modules\prettier" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.file-colors" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\public" />
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\HomeButton" />
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Button" />
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Auth\AuthRegister" />
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Auth\LogIn" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames" />
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components" />
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\fonts" />
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Header\UserPanel" />
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Header" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.npm start">
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="npm start" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="478791fc-9a99-4561-a0ef-72d5602e7793" name="Default Changelist" comment="" />
+      <created>1612019821616</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1612019821616</updated>
+      <workItem from="1612019823559" duration="6149000" />
+      <workItem from="1612087095487" duration="2183000" />
+      <workItem from="1612091964655" duration="194000" />
+      <workItem from="1612092192025" duration="53000" />
+      <workItem from="1612092266520" duration="21712000" />
+      <workItem from="1612172176264" duration="13823000" />
+      <workItem from="1612268292744" duration="4363000" />
+      <workItem from="1612287507557" duration="618000" />
+      <workItem from="1612289199722" duration="4570000" />
+      <workItem from="1612441845172" duration="30067000" />
+      <workItem from="1612484460431" duration="243000" />
+      <workItem from="1612484718835" duration="11000" />
+      <workItem from="1612495616956" duration="1247000" />
+      <workItem from="1612521001612" duration="593000" />
+      <workItem from="1612612740656" duration="14572000" />
+      <workItem from="1612648214240" duration="1976000" />
+      <workItem from="1612698584250" duration="1202000" />
+      <workItem from="1612718007063" duration="22928000" />
+      <workItem from="1612789570987" duration="10310000" />
+      <workItem from="1612806855945" duration="7684000" />
+      <workItem from="1612870814723" duration="18583000" />
+      <workItem from="1612958701032" duration="24880000" />
+      <workItem from="1613051539623" duration="20434000" />
+      <workItem from="1613122249816" duration="2636000" />
+      <workItem from="1613149719256" duration="16751000" />
+      <workItem from="1613225651228" duration="25380000" />
+      <workItem from="1613314464433" duration="82000" />
+      <workItem from="1613315185915" duration="19115000" />
+      <workItem from="1613382728499" duration="24143000" />
+      <workItem from="1613477010514" duration="19316000" />
+      <workItem from="1613654350563" duration="1069000" />
+      <workItem from="1613656012991" duration="17633000" />
+      <workItem from="1613760374760" duration="2495000" />
+      <workItem from="1613768417678" duration="966000" />
+      <workItem from="1613769398826" duration="271000" />
+      <workItem from="1613769682107" duration="102000" />
+      <workItem from="1613769799445" duration="212000" />
+    </task>
+    <task id="LOCAL-00001" summary="startpoint">
+      <created>1613658883474</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1613658883474</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Implemented reading from sessionStorage in GameManager">
+      <created>1613768624038</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1613768624038</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Update dev dependencies">
+      <created>1613769185896</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1613769185896</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="startpoint" />
+    <MESSAGE value="Implemented reading from sessionStorage in GameManager" />
+    <MESSAGE value="Update dev dependencies" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update dev dependencies" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="658" y="410" key="#ESLint" timestamp="1612648341031">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="658" y="410" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1612648341031" />
+    <state x="579" y="198" key="#Inspections" timestamp="1613769375131">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="579" y="198" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1613769375131" />
+    <state x="703" y="385" key="#Updates" timestamp="1612484518651">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="703" y="385" key="#Updates/0.0.1920.1040@0.0.1920.1040" timestamp="1612484518651" />
+    <state x="723" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1613407162978">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="723" y="320" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1613407162978" />
+    <state x="617" y="254" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1612484523424">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="617" y="254" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1612484523424" />
+    <state x="714" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1613408163458">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="714" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1613408163458" />
+    <state x="519" y="265" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1613168776763">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="519" y="265" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1613168776763" />
+    <state x="754" y="373" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1613667376867">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="754" y="373" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1613667376867" />
+    <state x="458" y="296" width="663" height="683" key="EditFileWatcherDialog" timestamp="1612446065856">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="458" y="296" width="663" height="683" key="EditFileWatcherDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1612446065856" />
+    <state x="397" y="273" key="FileChooserDialogImpl" timestamp="1613237277071">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="397" y="273" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1613237277071" />
+    <state x="729" y="220" key="RollbackChangesDialog" timestamp="1613658681623">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="729" y="220" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1613658681623" />
+    <state x="290" y="150" key="SettingsEditor" timestamp="1613770010569">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="290" y="150" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1613770010569" />
+    <state x="559" y="251" key="Vcs.Push.Dialog.v2" timestamp="1613655060541">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="559" y="251" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1613655060541" />
+    <state x="548" y="128" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1613160909546">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="548" y="128" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1613160909546" />
+    <state x="775" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1613654560518">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="775" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1613654560518" />
+    <state x="665" y="119" width="585" height="801" key="find.popup" timestamp="1613654776351">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="665" y="119" width="585" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1613654776351" />
+    <state x="810" y="290" key="refactoring.ChangeSignatureDialog" timestamp="1613507238553">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="810" y="290" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1613507238553" />
+    <state x="616" y="235" key="run.anything.popup" timestamp="1613690692039">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="235" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1613690692039" />
+    <state x="600" y="228" width="672" height="678" key="search.everywhere.popup" timestamp="1613254404816">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="600" y="228" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1613254404816" />
+  </component>
+</project>

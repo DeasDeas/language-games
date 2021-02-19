@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect, NavLink,
+  Redirect,
 } from "react-router-dom";
 import { Header } from "../Header/Header";
 import { AuthSelection } from "../Auth/AuthSelection/AuthSelection";
@@ -17,9 +17,8 @@ import { GameWrapper } from "../GameWrapper/GameWrapper";
 
 const App = () => {
   const dispatch = useDispatch();
-  const authCheckStatus = useSelector((state) => state.auth.status);
-  const isAuthenticated = useSelector((state) => state.auth.authenticated);
-
+  const authCheckStatus = useSelector(state => {state.auth.status});
+  const isAuthenticated = useSelector(state => state.auth.authenticated);
 
   useEffect(() => {
     authCheckStatus === "idle" && dispatch(getUser());
@@ -32,7 +31,7 @@ const App = () => {
         <main className="contentWrapper">
           <Switch>
             <Route exact path="/">
-              <MainMenu/>
+              <MainMenu />
             </Route>
             <Route exact path="/auth">
               {!isAuthenticated ? <AuthSelection /> : <Redirect to={`/`} />}
@@ -44,7 +43,7 @@ const App = () => {
               {!isAuthenticated ? <AuthRegister /> : <Redirect to={`/`} />}
             </Route>
             <Route path="/game/">
-              <GameWrapper/>
+              <GameWrapper />
             </Route>
           </Switch>
         </main>
