@@ -20,6 +20,7 @@ const App = () => {
   const authCheckStatus = useSelector((state) => state.auth.status);
   const isAuthenticated = useSelector((state) => state.auth.authenticated);
 
+
   useEffect(() => {
     authCheckStatus === "idle" && dispatch(getUser());
   });
@@ -43,7 +44,7 @@ const App = () => {
               {!isAuthenticated ? <AuthRegister /> : <Redirect to={`/`} />}
             </Route>
             <Route path="/game/">
-              <GameWrapper />
+              <GameWrapper/>
             </Route>
           </Switch>
         </main>

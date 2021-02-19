@@ -17,10 +17,6 @@ export const GameManager = (props) => {
   const game = useSelector((state) => state.game);
   const setsQ = game.sets.allIds.length;
 
-  const refreshHandler = () => {
-    dispatch(getData(window.location.pathname.match(/\d+$/)[0]))
-  }
-
   const completeDisabled =
     game.session &&
     !(game.sets.byId[game.sets.allIds[currentSet - 1]].wordsOrder.length === 0);
@@ -60,15 +56,6 @@ export const GameManager = (props) => {
   const wordsResult = useSelector(
     (state) => state.game.results[game.sets.allIds[currentSet - 1]]
   );
-
-  useEffect(() => {
-    !game.session &&
-      dispatch(
-        readGameState({
-	        sessionId: window.sessionStorage.getItem("current_session"),
-        })
-      );
-  });
 
   const getPictures = () =>
     game.sets.byId[game.sets.allIds[currentSet - 1]].picturesOrder.map(
@@ -127,7 +114,7 @@ export const GameManager = (props) => {
             game.session &&
             game.sets.byId[game.sets.allIds[currentSet - 1]].repeatable
           }
-          refreshHandler={refreshHandler}
+          refreshHandler={props.refreshHandler}
         />
         <button
           className={`${

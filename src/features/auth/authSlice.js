@@ -29,7 +29,6 @@ export const getUser = createAsyncThunk("auth/chekLogin", async () => {
       await axios.post(`/dj-rest-auth/token/verify/`, {});
     } catch {
       await axios.post(`/dj-rest-auth/token/refresh/`, {}).catch((err) => {
-        window.localStorage.clear();
         throw err;
       });
     }

@@ -18,97 +18,88 @@ const initialState = {
   },
 };
 
-export const getData = createAsyncThunk("game/getData", async ({sessionId, userId}) => {
-  const state = {
-    session: sessionId,
-    sets: null,
-    pictures: null,
-    results: {},
-  };
-
-  state.private = await axios
-    .get(`/api/session/${sessionId}/`)
-    .then((response) => {
-      return state.isPrivate = response.data.private;
-    });
-
-  const sets = await axios
-    .get(`/api/session-id/${sessionId}/sets/`)
-    .then((response) => {
-      let res = [...response.data];
-      return state.sets = {
-        byId: res.reduce((accumulator, currentValue) => {
-          currentValue.picturesOrder = [];
-          accumulator[currentValue.id] = currentValue;
-          return accumulator;
-        }, {}),
-        allIds: res.map((element) => element.id),
-      };
-    });
-
-  const pictures = await axios
-    .get(`/api/session-id/${sessionId}/pictures/`)
-    .then((response) => {
-      let res = [...response.data];
-      return state.pictures = {
-        byId: res.reduce((accumulator, currentValue) => {
-          accumulator[currentValue.id] = currentValue;
-          return accumulator;
-        }, {}),
-        allIds: res.map((element) => element.id),
-      };
-    });
-
-
-  sets.allIds.forEach((setId) => {
-    sets.byId[setId] = {
-      id: sets.byId[setId].id,
-      name: sets.byId[setId].name,
-      repeatable: sets.byId[setId].repeatable,
-      picturesOrder: [],
-      wordsOrder: [],
-      completed: false,
+export const getData = createAsyncThunk(
+  "game/getData",
+  async ({ sessionId, sessionInstance }) => {
+    const state = {
+      session: sessionId,
+      sets: null,
+      pictures: null,
+      results: {},
     };
-  });
 
-  pictures.allIds.forEach((pictureId) => {
-    const set = sets.byId[pictures.byId[pictureId].set]
-    set.picturesOrder.splice(
-      pictures.byId[pictureId].pos - 1,
-      1,
-      pictureId
-    );
+    state.private = await axios
+      .get(`/api/session/${sessionId}/`)
+      .then((response) => {
+        return (state.isPrivate = response.data.private);
+      });
 
-    set.wordsOrder.push(
-      pictures.byId[pictureId].word
-    );
-  });
+    const sets = await axios
+      .get(`/api/session-id/${sessionId}/sets/`)
+      .then((response) => {
+        let res = [...response.data];
+        return (state.sets = {
+          byId: res.reduce((accumulator, currentValue) => {
+            currentValue.picturesOrder = [];
+            accumulator[currentValue.id] = currentValue;
+            return accumulator;
+          }, {}),
+          allIds: res.map((element) => element.id),
+        });
+      });
 
-  sets.allIds.forEach((setId) => {
-    sets.byId[setId].wordsOrder = _.shuffle(sets.byId[setId].wordsOrder);
+    const pictures = await axios
+      .get(`/api/session-id/${sessionId}/pictures/`)
+      .then((response) => {
+        let res = [...response.data];
+        return (state.pictures = {
+          byId: res.reduce((accumulator, currentValue) => {
+            accumulator[currentValue.id] = currentValue;
+            return accumulator;
+          }, {}),
+          allIds: res.map((element) => element.id),
+        });
+      });
 
-    state.results[setId] = Array(sets.byId[setId].picturesOrder.length).fill({
-      word: null,
-      correct: null,
+    sets.allIds.forEach((setId) => {
+      sets.byId[setId] = {
+        id: sets.byId[setId].id,
+        name: sets.byId[setId].name,
+        repeatable: sets.byId[setId].repeatable,
+        picturesOrder: [],
+        wordsOrder: [],
+        completed: false,
+      };
     });
-  });
 
-  state.currentSet = 1;
-  state.userId = userId;
+    pictures.allIds.forEach((pictureId) => {
+      const set = sets.byId[pictures.byId[pictureId].set];
+      set.picturesOrder.splice(pictures.byId[pictureId].pos - 1, 1, pictureId);
 
-  window.localStorage.setItem(`${state.session}`, JSON.stringify(state));
+      set.wordsOrder.push(pictures.byId[pictureId].word);
+    });
 
-  return state;
-});
+    sets.allIds.forEach((setId) => {
+      sets.byId[setId].wordsOrder = _.shuffle(sets.byId[setId].wordsOrder);
+
+      state.results[setId] = Array(sets.byId[setId].picturesOrder.length).fill({
+        word: null,
+        correct: null,
+      });
+    });
+
+    state.currentSet = 1;
+
+    window.sessionStorage.setItem(sessionInstance, JSON.stringify(state));
+
+    return state;
+  }
+);
 
 export const gameSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
-    setSecureStatus(state, action) {
-      state.isPrivate = action.payload.secureStatus;
-      return state;
-    },
     readGameState(state, action) {
       state = action.payload;
       return state;
@@ -119,7 +110,6 @@ export const gameSlice = createSlice({
       state.sets.byId[action.payload.setId].wordsOrder = state.sets.byId[
         action.payload.setId
       ].wordsOrder.filter((word) => word !== action.payload.word);
-
 
       action.payload.prevWord &&
         state.sets.byId[action.payload.setId].wordsOrder.push(
@@ -162,12 +152,12 @@ export const gameSlice = createSlice({
       );
 
       state.sets.byId[action.payload.setId].completed = true;
-      window.localStorage.setItem(state.session, JSON.stringify(state));
       return state;
     },
     redoSet(state, action) {
       state.results[action.payload.setId].forEach((item) => {
-        item.word && state.sets.byId[action.payload.setId].wordsOrder.push(item.word);
+        item.word &&
+          state.sets.byId[action.payload.setId].wordsOrder.push(item.word);
         item.correct = null;
         item.word = null;
       });
@@ -189,7 +179,6 @@ export const gameSlice = createSlice({
       state.sets = action.payload.sets;
       state.pictures = action.payload.pictures;
       state.results = action.payload.results;
-      state.dataStatus = "idle";
       return state;
     },
   },
@@ -202,6 +191,6 @@ export const {
   switchSet,
   completeSet,
   redoSet,
-  setSecureStatus
+  setSecureStatus,
 } = gameSlice.actions;
 export default gameSlice.reducer;
