@@ -16,9 +16,11 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="478791fc-9a99-4561-a0ef-72d5602e7793" name="Default Changelist" comment="Minor code style improvements (0.1)">
+    <list default="true" id="478791fc-9a99-4561-a0ef-72d5602e7793" name="Default Changelist" comment="Bugfix">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/GameWrapper/GameWrapper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GameWrapper/GameWrapper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainMenu/MainMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainMenu/MainMenu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/game/gameSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/game/gameSlice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -189,7 +191,7 @@
       <workItem from="1613773067037" duration="193000" />
       <workItem from="1613773289092" duration="50000" />
       <workItem from="1613773350988" duration="3197000" />
-      <workItem from="1613820569202" duration="12608000" />
+      <workItem from="1613820569202" duration="14839000" />
     </task>
     <task id="LOCAL-00001" summary="startpoint">
       <created>1613658883474</created>
@@ -240,7 +242,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613836223961</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Bugfix">
+      <created>1613836649797</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1613836649797</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,7 +286,8 @@
     <MESSAGE value="Fixed auth problems" />
     <MESSAGE value="Minor code style improvements" />
     <MESSAGE value="Minor code style improvements (0.1)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor code style improvements (0.1)" />
+    <MESSAGE value="Bugfix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugfix" />
   </component>
   <component name="WindowStateProjectService">
     <state x="658" y="410" width="540" height="505" key="#ESLint" timestamp="1613836128418">

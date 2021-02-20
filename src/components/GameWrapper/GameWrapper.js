@@ -25,6 +25,7 @@ export const GameWrapper = () => {
     );
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function getSessionInstance(userId, currentSessionId) {
     let usersList = getUsersList();
     if (
@@ -39,6 +40,7 @@ export const GameWrapper = () => {
     return usersList[userId][currentSessionId];
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function prepareSessionInstance(userId, currentSessionId) {
     let usersList = getUsersList();
 
@@ -77,7 +79,7 @@ export const GameWrapper = () => {
     } else {
       window.sessionStorage.setItem(sessionInstance, JSON.stringify(game));
     }
-  }, [hasSessionDataReceived, game, dispatch, userId, currentSessionId]);
+  }, [getSessionInstance, userId, currentSessionId, hasSessionDataReceived, game, dispatch, prepareSessionInstance]);
 
   return hasSessionDataReceived ? (
     <GameManager refreshHandler={refreshHandler} />

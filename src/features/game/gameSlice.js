@@ -16,6 +16,7 @@ const initialState = {
   results: {
     setId: [],
   },
+  currentSet: 0
 };
 
 export const getData = createAsyncThunk(
@@ -27,12 +28,6 @@ export const getData = createAsyncThunk(
       pictures: null,
       results: {},
     };
-
-    state.private = await axios
-      .get(`/api/session/${sessionId}/`)
-      .then((response) => {
-        return (state.isPrivate = response.data.private);
-      });
 
     const sets = await axios
       .get(`/api/session-id/${sessionId}/sets/`)
@@ -96,7 +91,6 @@ export const getData = createAsyncThunk(
       });
     });
 
-    state.currentSet = 0;
     window.sessionStorage.setItem(sessionInstance, JSON.stringify(state));
 
     return state;
@@ -108,7 +102,9 @@ export const gameSlice = createSlice({
   initialState,
   reducers: {
     readGameState(state, action) {
-      state = action.payload;
+      state = {
+        ...state,
+        ...action.payload};
       return state;
     },
     placeWord(state, action) {

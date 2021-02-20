@@ -34,8 +34,8 @@ export const MainMenu = () => {
     <MainMenuFrame>
       {sessions.map((session, idx) => {
         return (
-          <button onClick={() => handleClick(session)}>
-            <MenuItem key={`menuItem${idx}`}>
+          <button key={`menuItem${idx}`} onClick={() => handleClick(session)}>
+            <MenuItem>
               <span>{session.name}</span>
             </MenuItem>
           </button>
