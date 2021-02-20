@@ -124,10 +124,9 @@ export const gameSlice = createSlice({
     },
     returnWord(state, action) {
       const { setId, position, word } = action.payload;
-      const setsResults = state.results[setId];
 
-      setsResults[position].word = null;
-      word && setsResults.wordsOrder.push(word);
+      state.results[setId][position].word = null;
+      word && state.results[setId].wordsOrder.push(word);
 
       return state;
     },
@@ -137,11 +136,11 @@ export const gameSlice = createSlice({
 
       switch (direction) {
         case "left": {
-          currentSet > 0 && --currentSet;
+          currentSet > 0 && --state.currentSet;
           break;
         }
         case "right": {
-          currentSet < length + 1 && ++currentSet;
+          currentSet < length + 1 && ++state.currentSet;
           break;
         }
         default: {
@@ -163,7 +162,6 @@ export const gameSlice = createSlice({
     },
     redoSet(state, action) {
       const setId = action.payload.setId;
-      let { completed, wordsOrder, repeatable } = state.sets.byId[setId];
 
       state.results[setId].forEach((item) => {
         item.word && state.sets.byId[setId].wordsOrder.push(item.word);
@@ -171,22 +169,21 @@ export const gameSlice = createSlice({
         item.word = null;
       });
 
-      completed = false;
-      wordsOrder = _.shuffle(wordsOrder);
-      --repeatable;
+      state.sets.byId[setId].completed = false;
+      state.sets.byId[setId].wordsOrder = _.shuffle(state.sets.byId[setId].wordsOrder);
+      --state.sets.byId[setId].repeatable;
 
       return state;
     },
   },
   extraReducers: {
     [getData.fulfilled]: (state, action) => {
-      let { dataStatus, session, sets, pictures, results } = state;
+      state.dataStatus = "succeeded";
+      state.session = action.payload.session;
+      state.sets = action.payload.sets;
+      state.pictures = action.payload.pictures;
+      state.results = action.payload.results;
 
-      dataStatus = "succeeded";
-      session = action.payload.session;
-      sets = action.payload.sets;
-      pictures = action.payload.pictures;
-      results = action.payload.results;
       return state;
     },
   },
