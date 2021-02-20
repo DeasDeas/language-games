@@ -133,7 +133,7 @@ export const gameSlice = createSlice({
     },
     switchSet(state, action) {
       const { direction, length } = action.payload;
-      const currentSet = state.currentSet;
+      let currentSet = state.currentSet;
 
       switch (direction) {
         case "left": {
@@ -163,7 +163,7 @@ export const gameSlice = createSlice({
     },
     redoSet(state, action) {
       const setId = action.payload.setId;
-      const { completed, wordsOrder, repeatable } = state.sets.byId[setId];
+      let { completed, wordsOrder, repeatable } = state.sets.byId[setId];
 
       state.results[setId].forEach((item) => {
         item.word && state.sets.byId[setId].wordsOrder.push(item.word);
@@ -180,7 +180,7 @@ export const gameSlice = createSlice({
   },
   extraReducers: {
     [getData.fulfilled]: (state, action) => {
-      const { dataStatus, session, sets, pictures, results } = state;
+      let { dataStatus, session, sets, pictures, results } = state;
 
       dataStatus = "succeeded";
       session = action.payload.session;

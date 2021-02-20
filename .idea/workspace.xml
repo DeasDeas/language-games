@@ -16,32 +16,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="478791fc-9a99-4561-a0ef-72d5602e7793" name="Default Changelist" comment="Update dev dependencies">
+    <list default="true" id="478791fc-9a99-4561-a0ef-72d5602e7793" name="Default Changelist" comment="Minor code style improvements">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/AuthButton/AuthButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/AuthButton/AuthButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/AuthLogIn/AuthLogIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/AuthLogIn/AuthLogIn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/AuthRegister/AuthRegister.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/AuthRegister/AuthRegister.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/AuthSelection/AuthSelection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/AuthSelection/AuthSelection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Button/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Button/Button.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CardFrame/CardFrame.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CardFrame/CardFrame.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Frame/Frame.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Frame/Frame.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/GameManager/GameManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GameManager/GameManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/GameWrapper/GameWrapper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GameWrapper/GameWrapper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Nav/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Nav/Nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/UserPanel/HomeButton/HomeButton.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/UserPanel/LogInButton/LogInButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/UserPanel/LogInButton/LogInButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/UserPanel/UserPanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/UserPanel/UserPanel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/UserPanel/UserWindow/UserWindow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/UserPanel/UserWindow/UserWindow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainMenu/MainMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainMenu/MainMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainMenu/MainMenuFrame/MainMenuFrame.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainMenu/MainMenuFrame/MainMenuFrame.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainMenu/MenuItem/MenuItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainMenu/MenuItem/MenuItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Panel/Panel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Panel/Panel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PictureCard/PictureCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PictureCard/PictureCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SetCard/SetCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SetCard/SetCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WordCard/WordCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WordCard/WordCard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/features/game/gameSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/game/gameSlice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -132,19 +109,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Михаил\WebstormProjects\languagegames" />
-      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components" />
-      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\fonts" />
-      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Header\UserPanel" />
-      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Header" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Михаил\WebstormProjects\languagegames\public" />
       <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\HomeButton" />
       <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Button" />
       <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Auth\AuthRegister" />
       <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Auth\LogIn" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames" />
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components" />
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\fonts" />
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Header\UserPanel" />
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Header" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
@@ -212,7 +189,7 @@
       <workItem from="1613773067037" duration="193000" />
       <workItem from="1613773289092" duration="50000" />
       <workItem from="1613773350988" duration="3197000" />
-      <workItem from="1613820569202" duration="11456000" />
+      <workItem from="1613820569202" duration="12200000" />
     </task>
     <task id="LOCAL-00001" summary="startpoint">
       <created>1613658883474</created>
@@ -249,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613777339668</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Minor code style improvements">
+      <created>1613835776920</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1613835776921</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,13 +268,14 @@
     <MESSAGE value="Implemented reading from sessionStorage in GameManager" />
     <MESSAGE value="Update dev dependencies" />
     <MESSAGE value="Fixed auth problems" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed auth problems" />
+    <MESSAGE value="Minor code style improvements" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor code style improvements" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="658" y="410" key="#ESLint" timestamp="1612648341031">
+    <state x="658" y="410" width="540" height="505" key="#ESLint" timestamp="1613836128418">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="658" y="410" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1612648341031" />
+    <state x="658" y="410" width="540" height="505" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1613836128418" />
     <state x="579" y="198" key="#Inspections" timestamp="1613831681182">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -339,10 +324,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="290" y="150" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1613771642854" />
-    <state x="559" y="251" key="Vcs.Push.Dialog.v2" timestamp="1613773213600">
+    <state x="559" y="251" key="Vcs.Push.Dialog.v2" timestamp="1613835798036">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="559" y="251" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1613773213600" />
+    <state x="559" y="251" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1613835798036" />
     <state x="738" y="363" key="cloudConfig.PluginsDialog" timestamp="1613773097822">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
