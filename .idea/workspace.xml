@@ -19,9 +19,7 @@
     <list default="true" id="478791fc-9a99-4561-a0ef-72d5602e7793" name="Default Changelist" comment="Bugfix">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/GameWrapper/GameWrapper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GameWrapper/GameWrapper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainMenu/MainMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainMenu/MainMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/features/game/gameSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/game/gameSlice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/GameManager/GameManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GameManager/GameManager.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +189,7 @@
       <workItem from="1613773067037" duration="193000" />
       <workItem from="1613773289092" duration="50000" />
       <workItem from="1613773350988" duration="3197000" />
-      <workItem from="1613820569202" duration="14839000" />
+      <workItem from="1613820569202" duration="15530000" />
     </task>
     <task id="LOCAL-00001" summary="startpoint">
       <created>1613658883474</created>
@@ -249,7 +247,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613836649797</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Bugfix">
+      <created>1613842553156</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1613842553156</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

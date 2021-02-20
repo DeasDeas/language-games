@@ -16,7 +16,7 @@ export const GameManager = (props) => {
   const { wordsOrder, picturesOrder } = game.sets.byId[
     game.sets.allIds[currentSetIdx]
   ];
-  const { completed, correct, repeatable } = game.sets.byId[
+  const { completed, repeatable } = game.sets.byId[
     game.sets.allIds[currentSetIdx]
   ];
   const completeDisabled = !(wordsOrder.length === 0);
@@ -53,7 +53,7 @@ export const GameManager = (props) => {
   function getPictures() {
     return picturesOrder.map((pictureId, idx) => {
       const { src, word } = game.pictures.byId[pictureId];
-      const wordResult = wordsResult[idx].word;
+      const { word:wordResult, correct} = wordsResult[idx];
 
       return (
         <PictureCard
