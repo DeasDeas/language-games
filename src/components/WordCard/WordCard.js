@@ -1,7 +1,9 @@
 import React from "react";
-import classes from "./WordCard.module.css";
+import { useDrag } from "react-dnd";
+
 import { ItemTypes } from "../../constants";
-import {useDrag} from "react-dnd";
+
+import classes from "./WordCard.module.css";
 
 export const WordCard = (props) => {
   const [{ isDragging }, drag] = useDrag({
@@ -13,7 +15,7 @@ export const WordCard = (props) => {
 
   return (
     <div
-	    id={props.id}
+      id={props.id}
       ref={drag}
       style={{
         visibility: isDragging ? "hidden" : "visible",

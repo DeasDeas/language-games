@@ -1,10 +1,11 @@
 import React from "react";
-import classes from "./UserPanel.module.css";
+import { useSelector } from "react-redux";
+
 import { NavLink } from "react-router-dom";
 import { LogInButton } from "./LogInButton/LogInButton";
 import { UserWindow } from "./UserWindow/UserWindow";
-import { HomeButton } from "./HomeButton/HomeButton";
-import { useSelector } from "react-redux";
+
+import classes from "./UserPanel.module.css";
 
 export const UserPanel = (props) => {
   const isInAuth = /\/auth/.test(props.currentRoute.pathname);

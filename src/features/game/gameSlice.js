@@ -61,7 +61,11 @@ export const getData = createAsyncThunk(
         });
       });
 
-    sets.allIds.forEach((setId) => {
+    const setsIds = sets.allIds;
+    const picturesIds = pictures.allIds;
+
+
+    setsIds.forEach((setId) => {
       sets.byId[setId] = {
         id: sets.byId[setId].id,
         name: sets.byId[setId].name,
@@ -72,24 +76,27 @@ export const getData = createAsyncThunk(
       };
     });
 
-    pictures.allIds.forEach((pictureId) => {
-      const set = sets.byId[pictures.byId[pictureId].set];
-      set.picturesOrder.splice(pictures.byId[pictureId].pos - 1, 1, pictureId);
+    picturesIds.forEach((pictureId) => {
+      const picture = pictures.byId[pictureId];
+      const set = sets.byId[picture.set];
 
-      set.wordsOrder.push(pictures.byId[pictureId].word);
+      set.picturesOrder.splice(picture.pos - 1, 1, pictureId);
+
+      set.wordsOrder.push(picture.word);
     });
 
-    sets.allIds.forEach((setId) => {
-      sets.byId[setId].wordsOrder = _.shuffle(sets.byId[setId].wordsOrder);
+    setsIds.forEach((setId) => {
+      const set = sets.byId[setId]
 
-      state.results[setId] = Array(sets.byId[setId].picturesOrder.length).fill({
+      set.wordsOrder = _.shuffle(set.wordsOrder);
+
+      state.results[setId] = Array(set.picturesOrder.length).fill({
         word: null,
         correct: null,
       });
     });
 
-    state.currentSet = 1;
-
+    state.currentSet = 0;
     window.sessionStorage.setItem(sessionInstance, JSON.stringify(state));
 
     return state;
@@ -105,37 +112,36 @@ export const gameSlice = createSlice({
       return state;
     },
     placeWord(state, action) {
-      state.results[action.payload.setId][action.payload.position].word =
-        action.payload.word;
-      state.sets.byId[action.payload.setId].wordsOrder = state.sets.byId[
-        action.payload.setId
-      ].wordsOrder.filter((word) => word !== action.payload.word);
+      const { setId, word, prevWord, position } = action.payload;
 
-      action.payload.prevWord &&
-        state.sets.byId[action.payload.setId].wordsOrder.push(
-          action.payload.prevWord
-        );
+      state.results[setId][position].word = word;
+      state.sets.byId[setId].wordsOrder = state.sets.byId[
+        setId
+      ].wordsOrder.filter((initialWord) => initialWord !== word);
+      prevWord && state.sets.byId[setId].wordsOrder.push(prevWord);
 
       return state;
     },
     returnWord(state, action) {
-      state.results[action.payload.setId][action.payload.position].word = null;
+      const { setId, position, word } = action.payload;
+      const setsResults = state.results[setId];
 
-      action.payload.word &&
-        state.sets.byId[action.payload.setId].wordsOrder.push(
-          action.payload.word
-        );
+      setsResults[position].word = null;
+      word && setsResults.wordsOrder.push(word);
 
       return state;
     },
     switchSet(state, action) {
-      switch (action.payload.direction) {
+      const { direction, length } = action.payload;
+      const currentSet = state.currentSet;
+
+      switch (direction) {
         case "left": {
-          state.currentSet > 1 && --state.currentSet;
+          currentSet > 0 && --currentSet;
           break;
         }
         case "right": {
-          state.currentSet < action.payload.length && ++state.currentSet;
+          currentSet < length + 1 && ++currentSet;
           break;
         }
         default: {
@@ -146,39 +152,41 @@ export const gameSlice = createSlice({
       return state;
     },
     completeSet(state, action) {
-      state.results[action.payload.setId].forEach(
-        (item, idx) =>
-          (item.correct = item.word === action.payload.correctWords[idx])
-      );
+      const { setId, correctWords } = action.payload;
 
-      state.sets.byId[action.payload.setId].completed = true;
+      state.results[setId].forEach(
+        (item, idx) => (item.correct = item.word === correctWords[idx])
+      );
+      state.sets.byId[setId].completed = true;
+
       return state;
     },
     redoSet(state, action) {
-      state.results[action.payload.setId].forEach((item) => {
-        item.word &&
-          state.sets.byId[action.payload.setId].wordsOrder.push(item.word);
+      const setId = action.payload.setId;
+      const { completed, wordsOrder, repeatable } = state.sets.byId[setId];
+
+      state.results[setId].forEach((item) => {
+        item.word && state.sets.byId[setId].wordsOrder.push(item.word);
         item.correct = null;
         item.word = null;
       });
 
-      state.sets.byId[action.payload.setId].completed = false;
-      state.sets.byId[action.payload.setId].wordsOrder = _.shuffle(
-        state.sets.byId[action.payload.setId].wordsOrder
-      );
-
-      --state.sets.byId[action.payload.setId].repeatable;
+      completed = false;
+      wordsOrder = _.shuffle(wordsOrder);
+      --repeatable;
 
       return state;
     },
   },
   extraReducers: {
     [getData.fulfilled]: (state, action) => {
-      state.dataStatus = "succeeded";
-      state.session = action.payload.session;
-      state.sets = action.payload.sets;
-      state.pictures = action.payload.pictures;
-      state.results = action.payload.results;
+      const { dataStatus, session, sets, pictures, results } = state;
+
+      dataStatus = "succeeded";
+      session = action.payload.session;
+      sets = action.payload.sets;
+      pictures = action.payload.pictures;
+      results = action.payload.results;
       return state;
     },
   },

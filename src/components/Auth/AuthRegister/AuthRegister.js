@@ -1,10 +1,12 @@
-import React, {useRef, useState} from "react";
-import classes from "../Auth.module.css";
-import { AuthButton } from "../AuthButton/AuthButton";
+import React, { useRef, useState } from "react";
+import { unwrapResult } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+
+import { AuthButton } from "../AuthButton/AuthButton";
 import { registerUser } from "../../../features/auth/authSlice";
-import {unwrapResult} from "@reduxjs/toolkit";
-import {useDispatch} from "react-redux";
+
+import classes from "../Auth.module.css";
 
 export const AuthRegister = () => {
   let history = useHistory();
@@ -34,8 +36,8 @@ export const AuthRegister = () => {
           unwrapResult(resultAction);
           history.push("/");
         } catch (err) {
-          password1.current.value = '';
-          password2.current.value = '';
+          password1.current.value = "";
+          password2.current.value = "";
           setRedOutline(classes.redOutline);
         }
       }}

@@ -15,21 +15,18 @@ export const getUsersSessions = createAsyncThunk(
       .get(`/api/sessions/owner/${userId}/`)
       .then((response) => {
         return response.data;
-      })
+      });
   }
 );
 
 export const getDefaultSessions = createAsyncThunk(
   "task/getDefaultSessions",
   async () => {
-    return await axios
-      .get(`/api/sessions/no-owner/`)
-      .then((response) => {
-        return response.data;
-      });
+    return await axios.get(`/api/sessions/no-owner/`).then((response) => {
+      return response.data;
+    });
   }
 );
-
 
 export const taskSlice = createSlice({
   name: "tasks",

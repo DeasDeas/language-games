@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import { Frame } from "../Frame/Frame";
-import classes from "./SetCard.module.css";
-import { Panel } from "../Panel/Panel";
+import React from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+
+import { Frame } from "../Frame/Frame";
+import { Panel } from "../Panel/Panel";
 import { Button } from "../Button/Button";
+
+import classes from "./SetCard.module.css";
 
 export const SetCard = (props) => {
   const completeButtonStyles =
@@ -18,7 +20,6 @@ export const SetCard = (props) => {
     attempts !== 0 && props.completeState
       ? { styleClasses: classes.RedoButton }
       : { styleClasses: classes.RedoButton__disabled };
-
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -34,7 +35,9 @@ export const SetCard = (props) => {
             Complete
           </Button>
           <div className={classes.RedoWrapper}>
-            <span className={classes.Counter}>Attempts: <b>{attempts}</b></span>
+            <span className={classes.Counter}>
+              Attempts: <b>{attempts}</b>
+            </span>
             <Button
               design={redoButtonStyles}
               disabled={!(attempts !== 0 && props.completeState)}

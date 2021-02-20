@@ -1,16 +1,17 @@
 import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+
 import { MainMenuFrame } from "./MainMenuFrame/MainMenuFrame";
 import { MenuItem } from "./MenuItem/MenuItem";
 import {
   getUsersSessions,
   getDefaultSessions,
 } from "../../features/task/taskSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 
 export const MainMenu = () => {
   const dispatch = useDispatch();
-  const {userSessionStatus, defaultSessionStatus} = useSelector(
+  const { userSessionStatus, defaultSessionStatus } = useSelector(
     (state) => state.tasks
   );
   const isAuthenticated = useSelector((state) => state.auth.user.pk) !== -1;
@@ -25,7 +26,7 @@ export const MainMenu = () => {
       dispatch(getUsersSessions(currentUser));
   });
 
-  const handleClick = session => {
+  const handleClick = (session) => {
     history.push(`/game/${session.id}`);
   };
 

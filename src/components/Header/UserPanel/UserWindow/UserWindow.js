@@ -1,13 +1,15 @@
 import React from "react";
-import classes from "./UserWindow.module.css";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom"
+
 import { logout } from "../../../../features/auth/authSlice";
-import { useHistory } from "react-router-dom";
+
+import classes from "./UserWindow.module.css";
 
 export const UserWindow = () => {
-  const user = useSelector((state) => state.auth.user);
-  let history = useHistory();
+  const username = useSelector((state) => state.auth.user.username);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   return (
     <div className={classes.userWrapper}>
@@ -19,7 +21,7 @@ export const UserWindow = () => {
         alt={"user"}
       />
       <div className={classes.userInfoWrapper}>
-        <span className={classes.userName}>{user.username}</span>
+        <span className={classes.userName}>{username}</span>
         <button
           onClick={async () => {
             await dispatch(logout());

@@ -1,18 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
-import classes from "../Auth.module.css";
-import { AuthButton } from "../AuthButton/AuthButton";
+import React, { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { authenticateUser, getUser } from "../../../features/auth/authSlice";
-import { useDispatch, useSelector } from "react-redux";
 import { unwrapResult } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
+
+import { AuthButton } from "../AuthButton/AuthButton";
+import { authenticateUser, getUser } from "../../../features/auth/authSlice";
+
+import classes from "../Auth.module.css";
 
 export const AuthLogIn = () => {
-  let history = useHistory();
+  const [redOutline, setRedOutline] = useState("");
   const dispatch = useDispatch();
-
   const username = useRef(null);
   const password = useRef(null);
-  const [redOutline, setRedOutline] = useState("");
+  const history = useHistory();
 
   return (
     <form
@@ -30,7 +31,7 @@ export const AuthLogIn = () => {
           history.push("/");
           dispatch(getUser());
         } catch (err) {
-          password.current.value = '';
+          password.current.value = "";
           setRedOutline(classes.redOutline);
         }
       }}

@@ -1,128 +1,111 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { SetCard } from "../SetCard/SetCard";
-import classes from "./GameManager.module.css";
 import { PictureCard } from "../PictureCard/PictureCard";
 import { WordCard } from "../WordCard/WordCard";
-import {
-  switchSet,
-  completeSet,
-  redoSet,
-} from "../../features/game/gameSlice";
+import { switchSet, completeSet, redoSet } from "../../features/game/gameSlice";
+
+import classes from "./GameManager.module.css";
 
 export const GameManager = (props) => {
-  const currentSet = useSelector((state) => state.game.currentSet);
+  const currentSetIdx = useSelector((state) => state.game.currentSet);
   const dispatch = useDispatch();
   const game = useSelector((state) => state.game);
   const setsQ = game.sets.allIds.length;
+  const { wordsOrder, picturesOrder } = game.sets.byId[
+    game.sets.allIds[currentSetIdx]
+  ];
+  const { completed, correct, repeatable } = game.sets.byId[
+    game.sets.allIds[currentSetIdx]
+  ];
+  const completeDisabled = !(wordsOrder.length === 0);
+  const wordsResult = useSelector(
+    (state) => state.game.results[game.sets.allIds[currentSetIdx]]
+  );
+  const correctWords = picturesOrder.map((pictureId) => {
+    return game.pictures.byId[pictureId].word;
+  });
 
-  const completeDisabled =
-    game.session &&
-    !(game.sets.byId[game.sets.allIds[currentSet - 1]].wordsOrder.length === 0);
-
-  const correctWords =
-    game.session &&
-    game.sets.byId[game.sets.allIds[currentSet - 1]].picturesOrder.map(
-      (pictureId) => {
-        return game.pictures.byId[pictureId].word;
-      }
-    );
-
-  const redoHandler = () => {
+  function redoHandler() {
     dispatch(
       redoSet({
-        setId: game.sets.allIds[currentSet - 1],
+        setId: game.sets.allIds[currentSetIdx],
       })
     );
-  };
+  }
 
-  const completeHandler = () => {
+  function completeHandler() {
     dispatch(
       completeSet({
-        setId: game.sets.allIds[currentSet - 1],
+        setId: game.sets.allIds[currentSetIdx],
         correctWords: correctWords,
       })
     );
-  };
+  }
 
-  const getWords = () =>
-    game.sets.byId[game.sets.allIds[currentSet - 1]].wordsOrder.map(
-      (word, idx) => {
-        return <WordCard word={word} key={`picture${idx}`} id={`word${idx}`} />;
-      }
-    );
+  function getWords() {
+    return wordsOrder.map((word, idx) => {
+      return <WordCard word={word} key={`picture${idx}`} id={`word${idx}`} />;
+    });
+  }
 
-  const wordsResult = useSelector(
-    (state) => state.game.results[game.sets.allIds[currentSet - 1]]
-  );
+  function getPictures() {
+    return picturesOrder.map((pictureId, idx) => {
+      const { src, word } = game.pictures.byId[pictureId];
+      const wordResult = wordsResult[idx].word;
 
-  const getPictures = () =>
-    game.sets.byId[game.sets.allIds[currentSet - 1]].picturesOrder.map(
-      (pictureId, idx) => {
-        const { src, word } = game.pictures.byId[pictureId];
-        const wordResult = wordsResult[idx].word;
-
-        return (
-          <PictureCard
-            key={`picture${idx}`}
-            id={`picture${idx}`}
-            src={src}
-            word={wordResult}
-            position={idx}
-            setId={game.sets.allIds[currentSet - 1]}
-            completed={
-              game.sets.byId[game.sets.allIds[currentSet - 1]].completed
-            }
-            correctWord={word}
-            isCorrect={
-              game.results[game.sets.allIds[currentSet - 1]][idx].correct
-            }
-          />
-        );
-      }
-    );
+      return (
+        <PictureCard
+          key={`picture${idx}`}
+          id={`picture${idx}`}
+          src={src}
+          word={wordResult}
+          position={idx}
+          setId={game.sets.allIds[currentSetIdx]}
+          completed={completed}
+          correctWord={word}
+          isCorrect={correct}
+        />
+      );
+    });
+  }
 
   return (
     <div className={classes.GameWrapper}>
       <span className={classes.SetsCounter}>
-        Set <b>{currentSet}</b> / {setsQ}
+        Set <b>{currentSetIdx + 1}</b> / {setsQ}
       </span>
       <div className={classes.SetsWrapper}>
         <button
           className={`${
-            currentSet === 1 ? classes.Arrow__disabled : classes.Arrow
+            currentSetIdx === 0 ? classes.Arrow__disabled : classes.Arrow
           }`}
           onClick={() => {
             dispatch(switchSet({ direction: "left", length: setsQ }));
           }}
-          disabled={currentSet === 1}
+          disabled={currentSetIdx === 0}
         >
           &#xE76B;
         </button>
         <SetCard
-          pictures={game.session && getPictures()}
-          words={game.session && getWords()}
-          completeDisabled={game.session && completeDisabled}
+          pictures={getPictures()}
+          words={getWords()}
+          completeDisabled={completeDisabled}
           completeHandler={completeHandler}
           redoHandler={redoHandler}
-          completeState={
-            game.session &&
-            game.sets.byId[game.sets.allIds[currentSet - 1]].completed
-          }
-          repeatable={
-            game.session &&
-            game.sets.byId[game.sets.allIds[currentSet - 1]].repeatable
-          }
+          completeState={completed}
+          repeatable={repeatable}
           refreshHandler={props.refreshHandler}
         />
         <button
           className={`${
-            currentSet === setsQ ? classes.Arrow__disabled : classes.Arrow
+            currentSetIdx === setsQ ? classes.Arrow__disabled : classes.Arrow
           }`}
           onClick={() => {
             dispatch(switchSet({ direction: "right", length: setsQ }));
           }}
-          disabled={currentSet === setsQ}
+          disabled={currentSetIdx === setsQ - 1}
         >
           &#xE76C;
         </button>

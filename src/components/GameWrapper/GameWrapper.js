@@ -5,30 +5,44 @@ import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "nanoid";
 
 export const GameWrapper = () => {
-  let dispatch = useDispatch();
-  const [redFromLocal, setRedFromLocal] = useState(false);
-
+  const dispatch = useDispatch();
+  const [hasSessionDataReceived, setHasSessionDataReceived] = useState(false);
   const userId = window.localStorage.getItem("userId");
   const game = useSelector((state) => state.game);
   const currentSessionId = window.location.pathname.match(/\d+$/)[0];
 
-  const refreshHandler = () => {
-    dispatch(
+  function getUsersList() {
+    return JSON.parse(window.sessionStorage.getItem("users"));
+  }
+
+  function refreshHandler() {
+    return dispatch(
       getData({
         sessionId: currentSessionId,
         sessionInstance: getSessionInstance(userId, currentSessionId),
         userId: userId,
       })
     );
-  };
+  }
 
   function getSessionInstance(userId, currentSessionId) {
-    let usersList = JSON.parse(window.localStorage.getItem("users"));
+    let usersList = getUsersList();
+    if (
+      !usersList ||
+      !usersList[userId] ||
+      !usersList[userId][currentSessionId]
+    ) {
+      prepareSessionInstance(userId, currentSessionId);
+      usersList = getUsersList();
+    }
 
-    if (!usersList) {
-      usersList = {};
-      usersList[userId] = { [currentSessionId]: nanoid(5) };
-      window.localStorage.setItem("users", JSON.stringify(usersList));
+    return usersList[userId][currentSessionId];
+  }
+
+  function prepareSessionInstance(userId, currentSessionId) {
+    let usersList = getUsersList();
+
+    function fetchSessionData() {
       dispatch(
         getData({
           sessionId: currentSessionId,
@@ -37,60 +51,37 @@ export const GameWrapper = () => {
       );
     }
 
-    let userInstanceList = usersList[userId];
-
-    if (!userInstanceList) {
+    if (!usersList || !usersList[userId]) {
+      usersList = !usersList ? {} : usersList;
       usersList[userId] = { [currentSessionId]: nanoid(5) };
-      window.localStorage.setItem("users", JSON.stringify(usersList));
-      dispatch(
-        getData({
-          sessionId: currentSessionId,
-          sessionInstance: usersList[userId][currentSessionId],
-        })
-      );
-      userInstanceList = usersList[userId];
+    } else if (!usersList[userId][currentSessionId]) {
+      usersList[userId][currentSessionId] = nanoid(5);
     }
 
-    let instanceId = userInstanceList[currentSessionId];
-
-    if (!instanceId) {
-      userInstanceList[currentSessionId] = nanoid(5);
-      window.localStorage.setItem("users", JSON.stringify(usersList));
-      dispatch(
-        getData({
-          sessionId: currentSessionId,
-          sessionInstance: userInstanceList[currentSessionId],
-        })
-      );
-    }
-
-    return userInstanceList[currentSessionId];
+    fetchSessionData();
+    setHasSessionDataReceived(false);
+    window.sessionStorage.setItem("users", JSON.stringify(usersList));
   }
 
   useEffect(() => {
     let sessionInstance = getSessionInstance(userId, currentSessionId);
-    let localState = JSON.parse(window.sessionStorage.getItem(sessionInstance));
+    const sessionState = JSON.parse(
+      window.sessionStorage.getItem(sessionInstance)
+    );
 
-    if (!redFromLocal && localState) {
-      setRedFromLocal(true);
-      dispatch(readGameState(localState));
-    } else if (!redFromLocal && game.dataStatus === "idle") {
-      setRedFromLocal(false);
-      dispatch(
-        getData({
-          sessionId: currentSessionId,
-          sessionInstance: sessionInstance,
-          userId: userId,
-        })
-      );
+    if (!hasSessionDataReceived && sessionState) {
+      setHasSessionDataReceived(true);
+      dispatch(readGameState(sessionState));
+    } else if (!hasSessionDataReceived && game.dataStatus === "idle") {
+      prepareSessionInstance(userId, currentSessionId);
     } else {
       window.sessionStorage.setItem(sessionInstance, JSON.stringify(game));
     }
-  }, [getSessionInstance, userId, currentSessionId, redFromLocal, game, dispatch]);
+  }, [hasSessionDataReceived, game, dispatch, userId, currentSessionId]);
 
-  return redFromLocal ? (
+  return hasSessionDataReceived ? (
     <GameManager refreshHandler={refreshHandler} />
   ) : (
-    <div>{redFromLocal}</div>
+    <div>{hasSessionDataReceived}</div>
   );
 };

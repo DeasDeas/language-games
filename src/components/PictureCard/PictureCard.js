@@ -1,12 +1,15 @@
-import React, {useEffect} from "react";
-import classes from "./PictureCard.module.css";
-import { ItemTypes } from "../../constants";
+import React from "react";
+import { useDispatch } from "react-redux";
 import { useDrop } from "react-dnd";
-import { useDispatch, useSelector } from "react-redux";
+
+import { ItemTypes } from "../../constants";
 import { placeWord, returnWord } from "../../features/game/gameSlice";
+
+import classes from "./PictureCard.module.css";
 
 export const PictureCard = (props) => {
   const dispatch = useDispatch();
+  const isCorrect = props.isCorrect;
 
   const [{ isOver }, drop] = useDrop({
     accept: ItemTypes.WORD,
@@ -22,8 +25,6 @@ export const PictureCard = (props) => {
     },
     collect: (monitor) => ({ isOver: !!monitor.isOver() }),
   });
-
-  const isCorrect = props.isCorrect;
 
   return (
     <div

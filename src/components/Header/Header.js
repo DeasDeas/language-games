@@ -1,18 +1,18 @@
-import React, { useEffect } from "react";
-import classes from "./Header.module.css"
-import { UserPanel } from "./UserPanel/UserPanel";
-import { useSelector } from 'react-redux'
+import React from "react";
 import { useLocation } from "react-router-dom"
+
+import { UserPanel } from "./UserPanel/UserPanel";
 import { Nav } from "./Nav/Nav";
 
-export const Header = (props) => {
-	const user = useSelector(state => state.auth.user);
+import classes from "./Header.module.css"
+
+export const Header = () => {
 	const currentRoute = useLocation();
 
 	return (
 			<div className={classes.Header}>
 				<Nav/>
-				<UserPanel user={user} currentRoute={currentRoute} />
+				<UserPanel currentRoute={currentRoute} />
 			</div>
 		)
 }

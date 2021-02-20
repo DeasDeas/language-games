@@ -1,21 +1,23 @@
 import React from 'react';
-import { AuthButton } from "../AuthButton/AuthButton";
-import classes from '../Auth.module.css'
 import { NavLink } from "react-router-dom";
 
-export const AuthSelection = (props) => {
+import { AuthButton } from "../AuthButton/AuthButton";
+
+import classes from '../Auth.module.css'
+
+export const AuthSelection = () => {
 
 	return (
 		<form className={classes.Frame}>
 			<p>Войдите в систему или зарегистрируйтесь:</p>
-			<div className={classes.AuthButton}>
+			<div>
 				<NavLink to="/auth/login">
 					<AuthButton styleClasses={classes.SingInButton}>
 						Log In
 					</AuthButton>
 				</NavLink>
 				<NavLink to="/auth/register">
-					<AuthButton styleClasses={classes.RegisterButton}>
+					<AuthButton>
 						Register
 					</AuthButton>
 				</NavLink>
