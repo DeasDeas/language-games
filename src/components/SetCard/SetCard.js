@@ -2,58 +2,84 @@ import React from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
+import AddPictureModal from "../Modal/AddPictureModal/AddPictureModal";
 import { Frame } from "../Frame/Frame";
 import { Panel } from "../Panel/Panel";
-import { Button } from "../Button/Button";
 
 import classes from "./SetCard.module.css";
+import { Button, IconButton } from "../../mui/themes";
+import Box from "@material-ui/core/Box";
+import { Typography } from "@material-ui/core";
+import { DeleteOutline } from "@material-ui/icons";
+import Tooltip from "@material-ui/core/Tooltip";
+
 
 export const SetCard = (props) => {
-  const completeButtonStyles =
-    !props.completeDisabled && !props.completeState
-      ? { styleClasses: classes.SubmitButton }
-      : { styleClasses: classes.SubmitButton__disabled };
-
   const attempts = props.repeatable;
-
-  const redoButtonStyles =
-    attempts !== 0 && props.completeState
-      ? { styleClasses: classes.RedoButton }
-      : { styleClasses: classes.RedoButton__disabled };
+  const controlsWrapperClasses = props.constructor
+    ? classes.controlsWrapper__constructor
+    : classes.controlsWrapper;
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <Frame styles={classes.SetCard}>
-        <Panel styles={classes.PicturesWrapper}>{props.pictures}</Panel>
-        <Panel styles={classes.WordsWrapper}>{props.words}</Panel>
-        <div className={classes.ControlsWrapper}>
+      <Frame styles={classes.setCard}>
+        <Panel styles={classes.picturesWrapper}>
+          {props.pictures}
+          {props.constructor && <AddPictureModal setId={props.setId} />}
+        </Panel>
+        <Panel styles={classes.wordsWrapper}>{props.words}</Panel>
+        <Box className={controlsWrapperClasses}>
           <Button
-            design={completeButtonStyles}
+            className={classes.submitButton}
             disabled={props.completeDisabled || props.completeState}
-            click={props.completeHandler}
+            onClick={props.completeHandler}
+            variant="contained"
+            color="green"
           >
             Complete
           </Button>
-          <div className={classes.RedoWrapper}>
-            <span className={classes.Counter}>
+          <Box className={classes.redoWrapper}>
+            <Typography component={"span"} className={classes.counter}>
               Attempts: <b>{attempts}</b>
-            </span>
+            </Typography>
             <Button
-              design={redoButtonStyles}
+              className={classes.redoButton}
               disabled={!(attempts !== 0 && props.completeState)}
-              click={props.redoHandler}
+              onClick={props.redoHandler}
+              variant="contained"
+              color="orange"
             >
               Redo
             </Button>
-          </div>
+          </Box>
           <Button
-            design={{ styleClasses: classes.RefreshButton }}
-            click={props.refreshHandler}
+            className={classes.refreshButton}
+            onClick={props.refreshHandler}
+            variant="contained"
+            color="orange"
           >
             Refresh
           </Button>
-        </div>
+          {props.constructor && <ApplyChangesButton applyHandler={props.applyHandler}/>}
+        </Box>
+        {props.constructor && <Box className={classes.deleteButtonWrapper}>
+          <Tooltip title="Delete set" aria-label="add">
+            <IconButton onClick={() => props.deleteSetHandler(props.setId)} variant="contained" color="red">
+              <DeleteOutline />
+            </IconButton>
+          </Tooltip>
+        </Box>}
       </Frame>
     </DndProvider>
+  );
+};
+
+const ApplyChangesButton = ({applyHandler}) => {
+  return (
+    <div className={classes.buttonWrapper}>
+      <Button variant="contained" color="green" onClick={applyHandler}>
+        APPLY CHANGES
+      </Button>
+    </div>
   );
 };

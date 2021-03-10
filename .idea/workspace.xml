@@ -17,9 +17,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="478791fc-9a99-4561-a0ef-72d5602e7793" name="Default Changelist" comment="Bugfix">
+      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Form/Form.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Form/Form.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/MainMenu/MainMenu.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Modal/AddPictureModal/AddPictureModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Modal/AddPictureModal/AddPictureModal.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Modal/ChangePictureModal/ChangePictureModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Modal/ChangePictureModal/ChangePictureModal.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/thunks/gameMiddleware.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mui/themes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/Auth.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/Auth.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/AuthButton/AuthButton.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/AuthButton/AuthButton.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/AuthLogIn/AuthLogIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/AuthLogIn/AuthLogIn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/AuthRegister/AuthRegister.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/AuthRegister/AuthRegister.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/AuthSelection/AuthSelection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/AuthSelection/AuthSelection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Frame/Frame.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Frame/Frame.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Frame/Frame.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Frame/Frame.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/GameManager/GameManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GameManager/GameManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/GameManager/GameManager.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GameManager/GameManager.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/GameWrapper/GameWrapper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GameWrapper/GameWrapper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/UserPanel/LogInButton/LogInButton.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/UserPanel/UserPanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/UserPanel/UserPanel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/UserPanel/UserPanel.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/UserPanel/UserPanel.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/UserPanel/UserWindow/UserWindow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/UserPanel/UserWindow/UserWindow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/UserPanel/UserWindow/UserWindow.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/UserPanel/UserWindow/UserWindow.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainMenu/MainMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainMenu/MainMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainMenu/MainMenuFrame/MainMenuFrame.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainMenu/MainMenuFrame/MainMenuFrame.module.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainMenu/MenuItem/MenuItem.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainMenu/MenuItem/MenuItem.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PictureCard/PictureCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PictureCard/PictureCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PictureCard/PictureCard.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PictureCard/PictureCard.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SetCard/SetCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SetCard/SetCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SetCard/SetCard.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SetCard/SetCard.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WordCard/WordCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WordCard/WordCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WordCard/WordCard.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WordCard/WordCard.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/auth/authSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/auth/authSlice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/game/gameSlice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/game/gameSlice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/normalize.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/normalize.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,9 +132,11 @@
   <component name="PropertiesComponent">
     <property name="NewWatcherDialog.advanced.open" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/src/components/SetCard/ApplyChangesButton/ApplyChangesButton.module.css.map" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/Form" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -106,22 +152,23 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\Михаил\WebstormProjects\languagegames\node_modules\prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.file-colors" />
+    <property name="ts.external.directory.path" value="D:\webstorm\WebStorm 2020.2.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Form" />
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Modal\ChangePictureModal" />
       <recent name="C:\Users\Михаил\WebstormProjects\languagegames\public" />
       <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\HomeButton" />
       <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Button" />
-      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Auth\AuthRegister" />
-      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Auth\LogIn" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Михаил\WebstormProjects\languagegames" />
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\SetCard" />
       <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components" />
-      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\fonts" />
-      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Header\UserPanel" />
-      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Header" />
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\features" />
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\GameWrapper" />
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
@@ -189,7 +236,24 @@
       <workItem from="1613773067037" duration="193000" />
       <workItem from="1613773289092" duration="50000" />
       <workItem from="1613773350988" duration="3197000" />
-      <workItem from="1613820569202" duration="15530000" />
+      <workItem from="1613820569202" duration="30481000" />
+      <workItem from="1614016119911" duration="15012000" />
+      <workItem from="1614156813328" duration="637000" />
+      <workItem from="1614160881185" duration="4947000" />
+      <workItem from="1614180369713" duration="7514000" />
+      <workItem from="1614193705261" duration="329000" />
+      <workItem from="1614250525125" duration="32592000" />
+      <workItem from="1614339714911" duration="7335000" />
+      <workItem from="1614411938851" duration="14117000" />
+      <workItem from="1614561035164" duration="1802000" />
+      <workItem from="1614686372754" duration="3573000" />
+      <workItem from="1615045426194" duration="2924000" />
+      <workItem from="1615074265440" duration="5072000" />
+      <workItem from="1615126474008" duration="4259000" />
+      <workItem from="1615148336700" duration="701000" />
+      <workItem from="1615254345908" duration="3481000" />
+      <workItem from="1615298769650" duration="599000" />
+      <workItem from="1615361443382" duration="4499000" />
     </task>
     <task id="LOCAL-00001" summary="startpoint">
       <created>1613658883474</created>
@@ -254,7 +318,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613842553156</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Bugfix">
+      <created>1613843278498</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1613843278498</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,10 +370,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="658" y="410" width="540" height="505" key="#ESLint/0.0.1920.1040@0.0.1920.1040" timestamp="1613836128418" />
-    <state x="579" y="198" key="#Inspections" timestamp="1613831681182">
+    <state x="579" y="198" key="#Inspections" timestamp="1614278347083">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="579" y="198" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1613831681182" />
+    <state x="579" y="198" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1614278347083" />
     <state x="714" y="342" key="#Notifications" timestamp="1613773307324">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -319,22 +390,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="617" y="254" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1612484523424" />
-    <state x="714" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1613408163458">
+    <state x="714" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1614261594962">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="714" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1613408163458" />
-    <state x="519" y="265" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1613168776763">
+    <state x="714" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1614261594962" />
+    <state x="519" y="265" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1614186141013">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="519" y="265" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1613168776763" />
+    <state x="519" y="265" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1614186141013" />
     <state x="754" y="373" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1613667376867">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="754" y="373" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1613667376867" />
-    <state x="458" y="296" width="663" height="683" key="EditFileWatcherDialog" timestamp="1612446065856">
+    <state x="458" y="296" width="663" height="683" key="EditFileWatcherDialog" timestamp="1613848787146">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="458" y="296" width="663" height="683" key="EditFileWatcherDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1612446065856" />
+    <state x="458" y="296" width="663" height="683" key="EditFileWatcherDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1613848787146" />
     <state x="397" y="273" key="FileChooserDialogImpl" timestamp="1613237277071">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -363,10 +434,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="548" y="128" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1613160909546" />
-    <state x="775" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1613654560518">
+    <state x="775" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1613861877220">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="775" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1613654560518" />
+    <state x="775" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1613861877220" />
     <state x="665" y="119" width="585" height="801" key="find.popup" timestamp="1613654776351">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -375,10 +446,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="810" y="290" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1613507238553" />
-    <state x="616" y="235" key="run.anything.popup" timestamp="1613690692039">
+    <state x="616" y="235" key="run.anything.popup" timestamp="1615128974011">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="235" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1613690692039" />
+    <state x="616" y="235" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1615128974011" />
     <state x="600" y="228" width="672" height="678" key="search.everywhere.popup" timestamp="1613254404816">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

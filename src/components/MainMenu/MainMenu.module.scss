@@ -1,0 +1,15 @@
+.ItemWrapper {
+  display: grid;
+  margin: 5px 0;
+  grid-template-columns: 6fr 0fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.MainMenuFrame {
+  margin: 20px 0 0 0;
+  padding: 20px;
+  flex-direction: column;
+  width: 760px;
+  min-height: 400px;
+}

@@ -4,6 +4,8 @@ import { useDrag } from "react-dnd";
 import { ItemTypes } from "../../constants";
 
 import classes from "./WordCard.module.css";
+import { CardContent, Typography } from "@material-ui/core";
+import Card from "@material-ui/core/Card";
 
 export const WordCard = (props) => {
   const [{ isDragging }, drag] = useDrag({
@@ -14,15 +16,18 @@ export const WordCard = (props) => {
   });
 
   return (
-    <div
+    <Card
       id={props.id}
+      className={classes.wordCard}
+      elevation={3}
       ref={drag}
       style={{
         visibility: isDragging ? "hidden" : "visible",
       }}
-      className={classes.WordCard}
     >
-      <span>{props.word}</span>
-    </div>
+      <CardContent>
+        <Typography variant="body2" component="span">{props.word}</Typography>
+      </CardContent>
+    </Card>
   );
 };

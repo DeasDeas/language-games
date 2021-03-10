@@ -1,62 +1,55 @@
-.SetCard {
+.setCard {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: 10px;
-  width: 600px;
-  min-height: 500px;
+  width: 40rem;
+  min-height: 25rem;
 
-  .PicturesWrapper {
-    height: 300px;
+  .picturesWrapper {
+    position: relative;
+    height: min-content;
     display: grid;
     grid-template:
-      "card card card card" 50%
-      "card card card card" 50%/25% 25% 25% 25%;
+      "card card card card" min-content
+      "card card card card" min-content
+      "card card card card" min-content/25% 25% 25% 25%;
+    justify-items: center;
+    row-gap: 0.5rem;
+  }
+
+  .wordsWrapper {
+    max-height: min-content;
+    display: grid;
+    grid-template:
+      "word word word word word" min-content
+      "word word word word word" min-content
+      "word word word word word" min-content/20% 20% 20% 20% 20%;
+    row-gap: 0.5rem;
     justify-items: center;
   }
 
-  .WordsWrapper {
-    height: 75px;
+  .controlsWrapper {
     display: grid;
     grid-template:
-      "word word word word word" 50%
-      "word word word word word" 50%/20% 20% 20% 20% 20%;
-    justify-items: center;
-  }
-
-  .ControlsWrapper {
-    display: grid;
-    grid-template:
-      "button1 button2 button3" 50px/33.33% 33.33% 33.33%;
+      "button1 button2 button3" 1fr/33.33% 33.33% 33.33%;
     align-items: center;
   }
 
-  .SubmitButton {
+  .controlsWrapper__constructor {
+    display: grid;
+    grid-template:
+      "button1 button2 button3" 1fr
+      ". button4 ." 1fr/33.33% 33.33% 33.33%;
+    align-items: center;
+  }
+
+  .submitButton {
     grid-area: button2;
-    background: #058d2f;
-    height: 35px;
-    width: 150px;
     justify-self: center;
-    font-size: 20px;
   }
 
-  .SubmitButton:hover {
-    background: #73ee65;
-  }
-
-  .SubmitButton:active {
-    background: #058d2f;
-  }
-
-  .SubmitButton__disabled {
-    grid-area: button2;
-    background: #c3c3c3;
-    height: 35px;
-    width: 150px;
-    justify-self: center;
-    font-size: 20px;
-  }
-
-  .RedoWrapper {
+  .redoWrapper {
     grid-area: button3;
     display: grid;
     grid-template:
@@ -65,45 +58,29 @@
     color: #858585;
   }
 
-  .Counter {
+  .counter {
     justify-self: end;
     margin: 0 10px 0 0;
   }
 
-  .RedoButton {
+  .redoButton {
     grid-area: button;
-    margin: 0 5px 0 0;
-    background: #e38717;
-    height: 35px;
-    width: 75px;
-    justify-self: end;
-    font-size: 20px;
   }
 
-  .RedoButton:hover {
-    background: #f5a94d;
-  }
-
-  .RedoButton:active {
-    background: #e38717;
-  }
-
-  .RedoButton__disabled {
-    grid-area: button;
-    background: #c3c3c3;
-    height: 35px;
-    width: 75px;
-    justify-self: end;
-    font-size: 20px;
-    margin: 0 5px 0 0;
-  }
-
-  .RefreshButton {
+  .refreshButton {
     grid-area: button1;
-    height: 35px;
-    width: 100px;
     justify-self: start;
-    margin: 0 0 0 5px;
-    font-size: 20px;
+  }
+
+  .buttonWrapper {
+    grid-area: button4;
+    display: flex;
+    justify-content: center;
+  }
+
+  .deleteButtonWrapper {
+    position: absolute;
+    right: 0.25rem;
+    top: 0.25rem;
   }
 }

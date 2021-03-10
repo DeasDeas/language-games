@@ -1,27 +1,28 @@
-import React from 'react';
+import React from "react";
 import { NavLink } from "react-router-dom";
 
-import { AuthButton } from "../AuthButton/AuthButton";
-
-import classes from '../Auth.module.css'
+import classes from "../Auth.module.css";
+import Paper from "@material-ui/core/Paper";
+import { Button } from "../../../mui/themes";
 
 export const AuthSelection = () => {
-
-	return (
-		<form className={classes.Frame}>
-			<p>Войдите в систему или зарегистрируйтесь:</p>
-			<div>
-				<NavLink to="/auth/login">
-					<AuthButton styleClasses={classes.SingInButton}>
-						Log In
-					</AuthButton>
-				</NavLink>
-				<NavLink to="/auth/register">
-					<AuthButton>
-						Register
-					</AuthButton>
-				</NavLink>
-			</div>
-		</form>
-	)
-}
+  return (
+    <Paper className={classes.Frame} elevation={3}>
+      <div className={classes.textWrapper}>
+        <p>Войдите в систему или зарегистрируйтесь:</p>
+      </div>
+      <div>
+        <NavLink className={classes.buttonWrapper} to="/auth/login">
+          <Button variant="contained" color="green">
+            Log In
+          </Button>
+        </NavLink>
+        <NavLink className={classes.buttonWrapper} to="/auth/register">
+          <Button variant="contained" color="secondary">
+            Register
+          </Button>
+        </NavLink>
+      </div>
+    </Paper>
+  );
+};

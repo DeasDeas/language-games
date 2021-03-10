@@ -5,11 +5,16 @@
   font-weight: normal;
 }
 
+.header {
+  display: flex;
+  flex-direction: column;
+  margin: 15px auto;
+  width: 20.5%;
+}
+
 .GameWrapper {
   display: flex;
   flex-direction: column;
-  margin: 20px 0 0;
-  padding: 10px;
   justify-content: center;
   text-align: center;
 }

@@ -1,26 +1,28 @@
 .PictureCard {
-  border: 1px solid #d0d0d0;
-  background: white;
+  position: relative;
   margin: 5px;
   padding: 10px;
-  width: 100px;
-  height: 110px;
+  width: 7.25rem;
+  height: 6.75rem;
   user-select: none;
 
-  img {
-    width: 100%;
-    height: 80px;
-    border-radius: 2px;
+  .cardMedia {
+    height: 5rem;
+    border-radius: 0.1rem;
   }
 
-  .WordSpace {
-    margin: 5px auto 0;
-    border: 1px solid #d0d0d0;
-    width: 90%;
-    height: 25px;
+  .actionArea {
+    margin-top: 0.4rem;
   }
 
-  .WordSpace:hover {
-    border: 1px dashed #fd7676;
+  .wordSpace {
+    margin: auto;
+    border: 0.05rem dotted #d0d0d0;
+    border-radius: 0.1rem;
+    height: 1.5rem;
+  }
+
+  .wordSpace:hover {
+    border: 0.05rem dashed #fd7676;
   }
 }

@@ -1,106 +1,84 @@
-import React, { useRef, useState } from "react";
+import React, { createRef } from "react";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { AuthButton } from "../AuthButton/AuthButton";
 import { registerUser } from "../../../features/auth/authSlice";
 
-import classes from "../Auth.module.css";
+import { Form } from "../../Form/Form";
+import { Button } from "../../../mui/themes";
 
 export const AuthRegister = () => {
   let history = useHistory();
-  const username = useRef(null);
-  const password1 = useRef(null);
-  const password2 = useRef(null);
-  const email = useRef(null);
-  const [redOutline, setRedOutline] = useState("");
+  const username = createRef();
+  const password = createRef();
+  const confirmPassword = createRef();
+  const email = createRef();
   const dispatch = useDispatch();
+
+  const registerForm = {
+    byId: {
+      login: {
+        id: "login",
+        ref: username,
+        label: "login",
+        required: true,
+      },
+      password: {
+        id: "password",
+        type: "password",
+        ref: password,
+        label: "password",
+        required: true,
+      },
+      "password-confirm": {
+        id: "password-confirm",
+        type: "password",
+        ref: confirmPassword,
+        label: "confirm password",
+        required: true,
+      },
+      "e-mail": {
+        id: "email",
+        type: "email",
+        ref: email,
+        label: "e-mail",
+        required: true,
+      },
+    },
+    allIds: ["login", "e-mail", "password", "password-confirm"],
+  };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const resultAction = await dispatch(
+        registerUser({
+          username: username.current.value,
+          password1: password.current.value,
+          password2: confirmPassword.current.value,
+          email: email.current.value,
+        })
+      );
+      unwrapResult(resultAction);
+      history.push("/");
+    } catch (err) {
+      password.current.value = "";
+      confirmPassword.current.value = "";
+    }
+  };
 
   return (
     <form
       method="post"
       name="register"
-      className={classes.Frame}
-      onSubmit={async (e) => {
-        e.preventDefault();
-        try {
-          const resultAction = await dispatch(
-            registerUser({
-              username: username.current.value,
-              password1: password1.current.value,
-              password2: password2.current.value,
-              email: email.current.value,
-            })
-          );
-          unwrapResult(resultAction);
-          history.push("/");
-        } catch (err) {
-          password1.current.value = "";
-          password2.current.value = "";
-          setRedOutline(classes.redOutline);
-        }
-      }}
+      onSubmit={(e) => submitHandler(e)}
     >
-      <div className={classes.FormContent}>
-        <div className={classes.input}>
-          <span>Login</span>
-          <input
-            className={redOutline}
-            type="text"
-            onChange={(e) => {
-              e.target.className = "";
-            }}
-            ref={username}
-            required
-          />
-        </div>
-        <div className={classes.input}>
-          <span>E-mail</span>
-          <input
-            className={redOutline}
-            type="email"
-            onChange={(e) => {
-              e.target.className = "";
-            }}
-            ref={email}
-            required
-          />
-        </div>
-        <div className={classes.input}>
-          <span>Password</span>
-          <input
-            className={redOutline}
-            type="password"
-            onChange={(e) => {
-              e.target.className = "";
-            }}
-            ref={password1}
-            required
-            autoComplete="on"
-          />
-        </div>
-        <div className={classes.input}>
-          <span>
-            Confirm
-            <br />
-            password
-          </span>
-          <input
-            className={redOutline}
-            type="password"
-            onChange={(e) => {
-              e.target.className = "";
-            }}
-            ref={password2}
-            required
-            autoComplete="on"
-          />
-        </div>
-        <AuthButton styleClasses={classes.stretchButton} value="submit">
-          Apply
-        </AuthButton>
-      </div>
+      <Form form={registerForm}>
+        <Button variant="contained" color="primary" type="submit">
+          Register
+        </Button>
+      </Form>
     </form>
   );
 };

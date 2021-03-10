@@ -1,6 +1,9 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import _ from "lodash";
+import { getData, sendData } from "../thunks/gameMiddleware";
+import { nanoid } from "nanoid";
+import { ITEM_STATUS } from "../../constants";
 
 const initialState = {
   session: null,
@@ -16,86 +19,13 @@ const initialState = {
   results: {
     setId: [],
   },
-  currentSet: 0
+  currentSet: 0,
+  addedSets: [],
+  deletedSets: [],
+  addedPictures: [],
+  changedPictures: [],
+  deletedPictures: [],
 };
-
-export const getData = createAsyncThunk(
-  "game/getData",
-  async ({ sessionId, sessionInstance }) => {
-    const state = {
-      session: sessionId,
-      sets: null,
-      pictures: null,
-      results: {},
-    };
-
-    const sets = await axios
-      .get(`/api/session-id/${sessionId}/sets/`)
-      .then((response) => {
-        let res = [...response.data];
-        return (state.sets = {
-          byId: res.reduce((accumulator, currentValue) => {
-            currentValue.picturesOrder = [];
-            accumulator[currentValue.id] = currentValue;
-            return accumulator;
-          }, {}),
-          allIds: res.map((element) => element.id),
-        });
-      });
-
-    const pictures = await axios
-      .get(`/api/session-id/${sessionId}/pictures/`)
-      .then((response) => {
-        let res = [...response.data];
-        return (state.pictures = {
-          byId: res.reduce((accumulator, currentValue) => {
-            accumulator[currentValue.id] = currentValue;
-            return accumulator;
-          }, {}),
-          allIds: res.map((element) => element.id),
-        });
-      });
-
-    const setsIds = sets.allIds;
-    const picturesIds = pictures.allIds;
-
-
-    setsIds.forEach((setId) => {
-      sets.byId[setId] = {
-        id: sets.byId[setId].id,
-        name: sets.byId[setId].name,
-        repeatable: sets.byId[setId].repeatable,
-        picturesOrder: [],
-        wordsOrder: [],
-        completed: false,
-      };
-    });
-
-    picturesIds.forEach((pictureId) => {
-      const picture = pictures.byId[pictureId];
-      const set = sets.byId[picture.set];
-
-      set.picturesOrder.splice(picture.pos - 1, 1, pictureId);
-
-      set.wordsOrder.push(picture.word);
-    });
-
-    setsIds.forEach((setId) => {
-      const set = sets.byId[setId]
-
-      set.wordsOrder = _.shuffle(set.wordsOrder);
-
-      state.results[setId] = Array(set.picturesOrder.length).fill({
-        word: null,
-        correct: null,
-      });
-    });
-
-    window.sessionStorage.setItem(sessionInstance, JSON.stringify(state));
-
-    return state;
-  }
-);
 
 export const gameSlice = createSlice({
   name: "game",
@@ -104,7 +34,8 @@ export const gameSlice = createSlice({
     readGameState(state, action) {
       state = {
         ...state,
-        ...action.payload};
+        ...action.payload,
+      };
       return state;
     },
     placeWord(state, action) {
@@ -122,7 +53,7 @@ export const gameSlice = createSlice({
       const { setId, position, word } = action.payload;
 
       state.results[setId][position].word = null;
-      word && state.results[setId].wordsOrder.push(word);
+      word && state.sets.byId[setId].wordsOrder.push(word);
 
       return state;
     },
@@ -166,8 +97,143 @@ export const gameSlice = createSlice({
       });
 
       state.sets.byId[setId].completed = false;
-      state.sets.byId[setId].wordsOrder = _.shuffle(state.sets.byId[setId].wordsOrder);
+      state.sets.byId[setId].wordsOrder = _.shuffle(
+        state.sets.byId[setId].wordsOrder
+      );
       --state.sets.byId[setId].repeatable;
+
+      return state;
+    },
+    pictureAdded(state, action) {
+      const { setId, src, word, owner } = action.payload;
+
+      let newId = nanoid(5);
+      state.pictures.byId[newId] = {
+        id: newId,
+        src: src,
+        word: word,
+        set: setId,
+        owmer: owner,
+        theme: 1,
+        pos: state.sets.byId[setId].picturesOrder.length + 1,
+        status: ITEM_STATUS.ADDED,
+      };
+      state.pictures.allIds.push(newId);
+      state.sets.byId[setId].picturesOrder.push(newId);
+      state.results[setId].push({ word: word, correct: true });
+      state.addedPictures.push(newId);
+
+      return state;
+    },
+    pictureChanged(state, action) {
+      const { id, setId, src, word, owner } = action.payload;
+      const oldPicture = state.pictures.byId[id];
+
+      let isNew = !(oldPicture.word == word && oldPicture.src == src);
+
+      state.pictures.byId[id] = {
+        ...state.pictures.byId[id],
+        src: src,
+        word: word,
+      };
+
+      if (state.pictures.byId[id].status === ITEM_STATUS.INITIAL && isNew) {
+        state.changedPictures.push(id);
+        state.pictures.byId[id].status = ITEM_STATUS.CHANGED;
+      }
+
+      state.sets.byId[setId].wordsOrder = state.sets.byId[
+        setId
+      ].wordsOrder.filter((word) => oldPicture.word !== word);
+
+      state.results[setId][
+        state.sets.byId[setId].picturesOrder.findIndex((e) => e === id)
+      ] = { word: isNew ? word : null, correct: true };
+
+      return state;
+    },
+    pictureDeleted(state, action) {
+      const { id } = action.payload;
+      const { set: setId, word } = state.pictures.byId[id];
+      const { picturesOrder, wordsOrder } = state.sets.byId[setId];
+      const pictureIdx = picturesOrder.findIndex(
+        (pictureId) => pictureId === id
+      );
+      const status = state.pictures.byId[id].status;
+
+      picturesOrder.splice(pictureIdx, 1);
+      state.sets.byId[setId].wordsOrder = wordsOrder.filter(
+        (arrWord) => arrWord !== word
+      );
+
+      delete state.pictures.byId[id];
+      state.pictures.allIds = state.pictures.allIds.filter(
+        (pictureId) => pictureId !== id
+      );
+      state.results[setId].splice(pictureIdx, 1);
+
+      if (
+        status === ITEM_STATUS.INITIAL ||
+        status === ITEM_STATUS.CHANGED
+      ) {
+        state.deletedPictures.push(id);
+      }
+      if (status === ITEM_STATUS.ADDED) {
+        state.addedPictures = state.addedPictures.filter(
+          (picId) => picId !== id
+        );
+      }
+
+      return state;
+    },
+    setAdded(state) {
+      const MAX_SET_Q = 15;
+      if (state.sets.allIds.length >= MAX_SET_Q) {
+        return;
+      }
+
+      const newId = nanoid(5);
+      state.sets.allIds.push(newId);
+      state.sets.byId[newId] = {
+        id: newId,
+        name: newId,
+        repeatable: 1,
+        picturesOrder: [],
+        wordsOrder: [],
+        completed: false,
+        status: ITEM_STATUS.ADDED
+      };
+      state.results[newId] = [];
+      state.addedSets.push(newId);
+
+      return state;
+    },
+    setDeleted(state, action) {
+      const { id } = action.payload;
+      const status = state.sets.byId[id].status;
+      const setIdx = state.sets.allIds.findIndex(setId => setId === id)
+
+      if (state.sets.allIds.length == 1) {
+        return;
+      }
+
+      state.sets.allIds = state.sets.allIds.filter(setId => setId !== id);
+      delete state.sets.byId[id];
+
+      if(status === ITEM_STATUS.ADDED) {
+        state.addedSets = state.addedSets.filter(setId => setId !== id);
+      }
+      if(status === ITEM_STATUS.INITIAL) {
+        state.deletedSets.push(id);
+      }
+
+      if(state.currentSet >= setIdx) {
+        --state.currentSet
+      }
+
+      [state.addedPictures, state.deletedPictures, state.changedPictures].forEach(array => array.forEach((elem, idx, selfArr) => {
+        state.pictures.byId[elem].set === id && selfArr.splice(idx, 1);
+      }))
 
       return state;
     },
@@ -180,8 +246,18 @@ export const gameSlice = createSlice({
       state.pictures = action.payload.pictures;
       state.results = action.payload.results;
 
+      state.currentSet = 0;
+      state.addedSets = [];
+      state.deletedSets = [];
+      state.addedPictures = [];
+      state.changedPictures = [];
+      state.deletedPictures = [];
+
       return state;
     },
+    [sendData.fulfilled]: (state) => {
+      return state;
+    }
   },
 });
 
@@ -193,5 +269,10 @@ export const {
   completeSet,
   redoSet,
   setSecureStatus,
+  pictureAdded,
+  pictureChanged,
+  pictureDeleted,
+  setAdded,
+  setDeleted
 } = gameSlice.actions;
 export default gameSlice.reducer;
