@@ -7,17 +7,16 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import { Header } from "../Header/Header";
-import { AuthSelection } from "../Auth/AuthSelection/AuthSelection";
-import { AuthLogIn } from "../Auth/AuthLogIn/AuthLogIn";
-import { AuthRegister } from "../Auth/AuthRegister/AuthRegister";
 import { getUser } from "../../features/auth/authSlice";
-import { MainMenu } from "../MainMenu/MainMenu";
-import { GameWrapper } from "../GameWrapper/GameWrapper";
 
-import "./App.css";
+import "./styles.css";
 import { MuiThemeProvider } from "@material-ui/core";
 import { mainTheme } from "../../mui/themes";
+import { Auth } from "../Auth";
+import { paths } from "../../vars/paths";
+import {TemplatePage} from "../../pages/TemplatePage";
+import {MainPage} from "../../pages/MainPage";
+import {GamesPage} from "../../pages/GamesPage";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -32,34 +31,17 @@ const App = () => {
     <MuiThemeProvider theme={mainTheme}>
       <Router>
         <div className="App">
-          <Header authCheckStatus={authCheckStatus} />
-          <main className="contentWrapper">
+          <TemplatePage>
+          <Auth />
             <Switch>
               <Route exact path="/">
-                <MainMenu />
+                <MainPage/>
               </Route>
-              <Route exact path="/auth">
-                {!isAuthenticated ? <AuthSelection /> : <Redirect to={`/`} />}
-              </Route>
-              <Route path="/auth/login">
-                {!isAuthenticated ? <AuthLogIn /> : <Redirect to={`/`} />}
-              </Route>
-              <Route path="/auth/register">
-                {!isAuthenticated ? <AuthRegister /> : <Redirect to={`/`} />}
-              </Route>
-              <Route path="/game">
-                <GameWrapper constructor={false} />
-              </Route>
-              <Route path="/game-constructor">
-                {isAuthenticated ? (
-                  <GameWrapper constructor={true} />
-                ) : (
-                  <Redirect to={`/`} />
-                )}
+              <Route path={paths.gamesPage}>
+	              <GamesPage/>
               </Route>
             </Switch>
-          </main>
-          <footer></footer>
+          </TemplatePage>
         </div>
       </Router>
     </MuiThemeProvider>

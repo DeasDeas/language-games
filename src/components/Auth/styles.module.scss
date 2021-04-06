@@ -1,0 +1,19 @@
+@import '../../vars/vars';
+
+.FormContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.inputWrapper {
+  margin-bottom: 15px;
+}
+
+.buttonWrapper {
+  margin: 5px;
+}
+
+.textWrapper {
+  margin-bottom: 20px;
+}

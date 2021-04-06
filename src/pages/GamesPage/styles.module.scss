@@ -1,0 +1,44 @@
+@import "../../vars/vars";
+
+.description {
+    grid-area: a;
+}
+
+.games {
+    grid-area: aside;
+}
+
+.gamesSelector {
+    grid-area: b;
+    display: flex;
+    justify-content: center;
+
+    .gameItem {
+        width: 15%;
+        min-height: 100px;
+        margin-right: 20px;
+
+        @media (max-width: $screen-sm-max) {
+            margin-right: 10px;
+            width: 30%;
+        }
+    }
+
+    .gameItem:first-child {
+        background: var(--secondary-bg-color);
+    }
+
+    .gameItem:last-child {
+        margin-right: 0;
+    }
+
+    .gameItem:hover {
+        transition: transform .5s ease-in;
+        transform: scale(1.1);
+    }
+
+    .gameItem:active {
+        transition: transform .5s ease-in;
+        transform: scale(1);
+    }
+}

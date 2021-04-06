@@ -1,0 +1,12 @@
+.footer {
+    position: relative;
+    bottom: 0;
+    border-top: 2px solid var(--main-elements-color);
+    padding: 10px 0;
+    height: 70px;
+
+    .footerInner {
+        justify-content: space-between;
+        width: 100%;
+    }
+}

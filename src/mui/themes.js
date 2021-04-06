@@ -1,6 +1,8 @@
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import withStyles from "@material-ui/core/styles/withStyles";
 import MiuButton from "@material-ui/core/Button";
+import muiTextField from "@material-ui/core/TextField";
+import {makeStyles} from "@material-ui/core";
 
 export const mainTheme = createMuiTheme({
 	overrides: {
@@ -21,7 +23,7 @@ export const mainTheme = createMuiTheme({
 		},
 		MuiButton: {
 			root: {
-				minWidth: "25px"
+				minWidth: "25px",
 			}
 		},
 		MuiAvatar: {
@@ -35,6 +37,12 @@ export const mainTheme = createMuiTheme({
 		MuiCardContent: {
 			root: {
 				padding: 0,
+			}
+		},
+		MuiInputBase: {
+			input: {
+				padding: "6px 11px 7px 0",
+				textOverflow: "ellipsis",
 			}
 		}
 	},
@@ -60,7 +68,7 @@ mainTheme.palette.green = mainTheme.palette.augmentColor({
 });
 
 mainTheme.palette.red = mainTheme.palette.augmentColor({
-	main: '#f60000',
+	main: '#b81616',
 	contrastText: '#ffffff',
 });
 

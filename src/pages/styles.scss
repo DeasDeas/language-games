@@ -1,0 +1,50 @@
+@import "../vars/vars";
+
+.templateA {
+    position: relative;
+    display: grid;
+    grid-template:
+        "a aside" 0.25fr
+        "b aside" 0.15fr
+        "c aside" 1fr/1fr 0.25fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    width: 100%;
+
+    @media (max-width: $screen-sm-max) {
+        grid-template:
+            "a" 0.25fr
+            "b" 0.25fr
+            "c" 0.25fr
+            "aside" 0.25fr/1fr;
+        grid-row-gap: 10px;
+    }
+}
+
+.templateB {
+    position: relative;
+    display: grid;
+    grid-template: "section aside" 1fr/1fr 0.25fr;
+    grid-column-gap: 20px;
+    width: 100%;
+
+    @media (max-width: $screen-sm-max) {
+        grid-template:
+            "section" 1fr
+            "aside" 0.5fr/1fr;
+        grid-row-gap: 10px;
+    }
+}
+
+.templateC {
+    position: relative;
+    display: grid;
+    grid-template: "section" 1fr/1fr;
+    width: 100%;
+
+    @media (max-width: $screen-sm-max) {
+        grid-template:
+            "section" 1fr;
+        grid-row-gap: 10px;
+    }
+}
