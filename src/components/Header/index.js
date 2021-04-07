@@ -5,8 +5,8 @@ import { Avatar, makeStyles } from "@material-ui/core";
 import { paths } from "../../vars/paths";
 import Typography from "@material-ui/core/Typography";
 import _ from "lodash";
-import { Button } from "../../mui/themes";
 import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   link: {
@@ -22,7 +22,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Header = ({ menuLinks, user }) => {
-  const mui = useStyles();
+  const mui = useStyles(),
+    isAuthenticated = !!user.id;
 
   return (
     <header className={`outerWrapper ${classes.header} background_primary`}>
@@ -41,8 +42,8 @@ export const Header = ({ menuLinks, user }) => {
               })}
           </ul>
         </nav>
-        <Box className={user && classes.profile}>
-          {user ? (
+        <Box className={isAuthenticated ? classes.profile : classes.login}>
+          {isAuthenticated ? (
             [
               <Avatar
                 className={classes.avatar}
@@ -68,7 +69,7 @@ export const Header = ({ menuLinks, user }) => {
            ]
           ) : (
             <NavLink to={`${paths.login}`}>
-              <Button variant="contained" color="primary">
+              <Button variant="outlined" color="primary">
                 login
               </Button>
             </NavLink>

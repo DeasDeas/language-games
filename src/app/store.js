@@ -1,43 +1,47 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore } from "@reduxjs/toolkit";
 import {
-	persistStore,
-	persistReducer,
-	FLUSH,
-	REHYDRATE,
-	PAUSE,
-	PERSIST,
-	PURGE,
-	REGISTER
-} from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-import authReducer from '../features/auth/authSlice'
-import tasksReducer from "../features/task/taskSlice";
-import gameReducer from "../features/game/gameSlice";
+import authReducer from "../features/auth";
+import gameInstanceReducer from "../features/gameInstances";
+import gameReducer from "../features/game";
+import pageStateReducer from "../features/pageState";
+
 import { getDefaultMiddleware } from "@reduxjs/toolkit";
-import {combineReducers} from "redux";
+import { combineReducers } from "redux";
 
 const persistConfig = {
-	key: 'root',
-	version: 1,
-	storage
-}
+  key: "root",
+  version: 1,
+  storage,
+};
 
-
-const persistedReducer = persistReducer(persistConfig, combineReducers ({
-		auth: authReducer,
-		tasks: tasksReducer,
-		game: gameReducer,
-}))
-
+const persistedReducer = persistReducer(
+  persistConfig,
+  combineReducers({
+    auth: authReducer,
+    gameInstances: gameInstanceReducer,
+    game: gameReducer,
+    pageState: pageStateReducer,
+  })
+);
 
 export const store = configureStore({
-	reducer: persistedReducer,
-	middleware: getDefaultMiddleware({
-		serializableCheck: {
-			ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-		}
-	})
-})
+  reducer: persistedReducer,
+  middleware: getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
+});
 
 export const persistor = persistStore(store);

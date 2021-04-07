@@ -9,7 +9,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import AddIcon from "@material-ui/icons/Add";
 import classes from "./styles.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { pictureAdded } from "../../../features/game/gameSlice";
+import { pictureAdded } from "../../../features/game";
 import { IconButton } from "../../../mui/themes";
 import Box from "@material-ui/core/Box";
 

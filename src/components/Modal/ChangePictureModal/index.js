@@ -16,7 +16,7 @@ import classes from "./styles.module.css";
 import {
   pictureChanged,
   pictureDeleted,
-} from "../../../features/game/gameSlice";
+} from "../../../features/game";
 
 export default function ChangePictureModal(props) {
   const dispatch = useDispatch();

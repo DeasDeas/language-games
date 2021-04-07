@@ -16,85 +16,41 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="478791fc-9a99-4561-a0ef-72d5602e7793" name="Default Changelist" comment="Game redactor was added">
-      <change afterPath="$PROJECT_DIR$/src/components/Auth/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Footer/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Footer/styles.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Frame/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Frame/styles.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Header/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Header/styles.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Panel/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Proceed/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Stepper/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/Game/Constructor/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/Game/PictureSet/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/Game/WordSet/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/Game/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/Game/styles.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/GamesSelector/ItemSeletor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/GamesSelector/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/containers/GamesSelector/styles.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/features/hooks/useWindowDimensions/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/GamesPage/GameItemPage/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/GamesPage/GameItemPage/styles.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/GamesPage/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/GamesPage/styles.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/MainPage/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/MainPage/styles.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/TemplatePage/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/TemplatePage/styles.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/styles.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/vars/consts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/vars/paths.js" afterDir="false" />
+    <list default="true" id="478791fc-9a99-4561-a0ef-72d5602e7793" name="Default Changelist" comment="Ui refactored">
+      <change afterPath="$PROJECT_DIR$/src/features/auth/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/auth/selectors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/game/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/game/selectors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/gameInstances/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/gameInstances/selectors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/pageState/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/features/pageState/selectors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/GamesPage/GameItemPage/AnimationContext.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/store.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/Auth.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/AuthLogIn/AuthLogIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/AuthLogIn/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/AuthRegister/AuthRegister.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/AuthRegister/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/AuthSelection/AuthSelection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/AuthSelection/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Button/Button.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Button/Button.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Form/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Form/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Form/Form.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Form/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Frame/Frame.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Frame/Frame.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/GameManager/GameManager.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/GameManager/GameManager.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/GameWrapper/GameWrapper.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Nav/Nav.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Nav/Nav.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/UserPanel/UserPanel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/UserPanel/UserPanel.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/UserPanel/UserWindow/UserWindow.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/UserPanel/UserWindow/UserWindow.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainMenu/MainMenu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainMenu/MainMenu.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainMenu/MenuItem/MenuItem.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainMenu/MenuItem/MenuItem.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Modal/AddPictureModal/AddPictureModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal/AddPictureModal/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Modal/AddPictureModal/AddPictureModal.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal/AddPictureModal/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Modal/ChangePictureModal/ChangePictureModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal/ChangePictureModal/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Modal/ChangePictureModal/ChangePictureModal.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal/ChangePictureModal/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Panel/Panel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Panel/Panel.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Panel/styles.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PictureCard/PictureCard.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PictureCard/PictureCard.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SetCard/SetCard.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SetCard/SetCard.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WordCard/WordCard.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WordCard/WordCard.module.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/vars/vars.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/vars/vars.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mui/themes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/mui/themes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/normalize.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/normalize.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/AuthLogIn/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/AuthLogIn/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/AuthRegister/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/AuthRegister/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/styles.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Modal/AddPictureModal/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal/AddPictureModal/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Modal/ChangePictureModal/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Modal/ChangePictureModal/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Stepper/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Stepper/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Game/PictureSet/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Game/PictureSet/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Game/WordSet/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Game/WordSet/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Game/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Game/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Game/styles.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Game/styles.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/auth/authSlice.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/game/gameSlice.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/task/taskSlice.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/thunks/gameMiddleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/game/gameMiddleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/GamesPage/GameItemPage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/GamesPage/GameItemPage/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/GamesPage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/GamesPage/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/TemplatePage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/TemplatePage/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vars/consts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/vars/consts.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +109,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/components/App/App.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/features/game/gameSlice.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/features/game/index.js" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1nnJG0f9ZhuNO8FD2JdoLxocDM1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -188,19 +144,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\features\game" />
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Stepper\defaultStepper" />
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\containers" />
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\pages\TemplatePage" />
+      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Auth" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\pages\GamesSelectionPage" />
       <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Frame" />
       <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\pages\TemplatePage" />
       <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Form" />
       <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Modal\ChangePictureModal" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Stepper\defaultStepper" />
-      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\containers" />
-      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\pages\TemplatePage" />
-      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src\components\Auth" />
-      <recent name="C:\Users\Михаил\WebstormProjects\languagegames\src" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
@@ -301,7 +257,8 @@
       <workItem from="1617533247119" duration="25469000" />
       <workItem from="1617633506056" duration="626000" />
       <workItem from="1617636226216" duration="22405000" />
-      <workItem from="1617709220444" duration="1599000" />
+      <workItem from="1617709220444" duration="35353000" />
+      <workItem from="1617791779836" duration="752000" />
     </task>
     <task id="LOCAL-00001" summary="startpoint">
       <created>1613658883474</created>
@@ -380,7 +337,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615367824549</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Ui refactored">
+      <created>1617711768138</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1617711768138</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -434,7 +398,8 @@
     <MESSAGE value="Minor code style improvements (0.1)" />
     <MESSAGE value="Bugfix" />
     <MESSAGE value="Game redactor was added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Game redactor was added" />
+    <MESSAGE value="Ui refactored" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ui refactored" />
   </component>
   <component name="WindowStateProjectService">
     <state x="658" y="410" width="540" height="505" key="#ESLint" timestamp="1613836128418">
@@ -494,10 +459,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="290" y="150" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1613771642854" />
-    <state x="559" y="251" key="Vcs.Push.Dialog.v2" timestamp="1613836224938">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="559" y="253" key="Vcs.Push.Dialog.v2" timestamp="1617711773101">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="559" y="251" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1613836224938" />
+    <state x="559" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1617711773101" />
     <state x="738" y="363" key="cloudConfig.PluginsDialog" timestamp="1613773097822">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

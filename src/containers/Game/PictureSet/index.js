@@ -3,20 +3,25 @@ import classes from "../styles.module.css";
 import Box from "@material-ui/core/Box";
 import { testData } from "../../../pages/TemplatePage";
 import Typography from "@material-ui/core/Typography";
-import {Button} from "../../../mui/themes";
+import { Button } from "../../../mui/themes";
+import { makeSelectSetItems } from "../../../features/game/selectors";
+import { useSelector } from "react-redux";
+import { PLACEHOLDER_IMG } from "../../../vars/consts";
+import Fade from "@material-ui/core/Fade";
 
-export const PictureSet = () => {
-  let items = testData.pictureItems.allIds.map(
-    (item) => testData.pictureItems.byIds[item]
-  );
+export const PictureSet = ({ setId, animate }) => {
+  const selectedSetItems = React.useMemo(makeSelectSetItems, []),
+    items = useSelector((state) => selectedSetItems(state, setId));
 
   const [selectedItem, setSelectedItem] = useState(null);
+
   const handleRadioCheck = (event) => {
     setSelectedItem(event.currentTarget.id);
   };
 
   return (
     <Box className={classes.pictureSet}>
+      <Fade in={animate}>
       <Box className={classes.pictures}>
         {items.map((item) => (
           <Picture
@@ -26,6 +31,8 @@ export const PictureSet = () => {
           />
         ))}
       </Box>
+      </Fade>
+      <Fade in={animate}>
       <Box className={classes.words}>
         {items.map((item) => {
           if (item.id === selectedItem) {
@@ -35,18 +42,18 @@ export const PictureSet = () => {
           }
         })}
       </Box>
+      </Fade>
       <Box className={classes.setControls}>
-        <Button className={classes.completeButton} variant="contained" color="green">
+        <Button
+          className={classes.completeButton}
+          variant="contained"
+          color="green"
+        >
           Выполнить
         </Button>
       </Box>
     </Box>
   );
-};
-
-const placeholder = {
-  src:
-    "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png",
 };
 
 const Picture = React.memo(({ item, handleRadioCheck }) => {
@@ -60,11 +67,8 @@ const Picture = React.memo(({ item, handleRadioCheck }) => {
         value={item.id}
       />
       <label className={classes.item} for={item.id}>
-        <img
-          src={!!item.image ? item.image.src : placeholder.src}
-          alt={placeholder.alt}
-        />
-        <Box className={`${classes.word}`}></Box>
+        {item.image.src ? <img src={item.image.src} alt={item.image.alt} /> : <img {...PLACEHOLDER_IMG}/>}
+        <Box className={`${classes.word}`}>{null}</Box>
       </label>
     </>
   );

@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 	},
 });
 
-export const Stepper = () => {
+export const Stepper = ({length=10, stepForward, stepBackward}) => {
 	const { width } = useWindowDimensions(),
 		classes = useStyles(),
 		theme = useTheme(),
@@ -23,21 +23,23 @@ export const Stepper = () => {
 
 	const handleNext = () => {
 		setActiveStep((prevActiveStep) => prevActiveStep + 1);
+		stepForward && stepForward();
 	};
 
 	const handleBack = () => {
 		setActiveStep((prevActiveStep) => prevActiveStep - 1);
+		stepBackward && stepBackward();
 	};
 
 	return (
 		<MobileStepper
 			variant={variant}
-			steps={30}
+			steps={length}
 			position="static"
 			activeStep={activeStep}
 			className={classes.root}
 			nextButton={
-				<Button size="small" onClick={handleNext} disabled={activeStep === 29}>
+				<Button size="small" onClick={handleNext} disabled={activeStep === length - 1}>
 					Next
 					{theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
 				</Button>

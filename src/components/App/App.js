@@ -1,13 +1,9 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
 } from "react-router-dom";
-
-import { getUser } from "../../features/auth/authSlice";
 
 import "./styles.css";
 import { MuiThemeProvider } from "@material-ui/core";
@@ -19,13 +15,6 @@ import {MainPage} from "../../pages/MainPage";
 import {GamesPage} from "../../pages/GamesPage";
 
 const App = () => {
-  const dispatch = useDispatch();
-  const authCheckStatus = useSelector((state) => state.auth.status);
-  const isAuthenticated = useSelector((state) => state.auth.authenticated);
-
-  useEffect(() => {
-    authCheckStatus === "idle" && dispatch(getUser());
-  });
 
   return (
     <MuiThemeProvider theme={mainTheme}>

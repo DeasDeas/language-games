@@ -3,7 +3,7 @@ import { unwrapResult } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { registerUser } from "../../../features/auth/authSlice";
+import { registerUser } from "../../../features/auth";
 
 import { Form } from "../../Form";
 import { Button } from "../../../mui/themes";
