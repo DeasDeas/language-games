@@ -38,6 +38,6 @@ status: in progress;
 - CSS modules, SCSS;
 - Material UI;
 
-Packages: ReactDND, reselect, axios;
+Also: ReactDND, reselect, axios;
 
 Backend-side of app is API on Django (DRF), db - Postgres, auth - django-rest-auth;
