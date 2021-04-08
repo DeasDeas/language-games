@@ -29,7 +29,7 @@ status: in progress;
 - personal account page;
 - aunthentication via social networks;
 
-### Demo of the prototype work:
+### Demo of the prototype:
 ![GIF 08 04 2021 16-28-02](https://user-images.githubusercontent.com/68167873/114035892-365d7200-9888-11eb-8fdf-a5d70ca7a41b.gif)
 
 ### Stack:
