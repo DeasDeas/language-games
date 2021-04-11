@@ -10,16 +10,20 @@ import { IconButton } from "../../mui/themes";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { makeSelectSet, selectAllSets } from "../../features/game/selectors";
 import { useSelector } from "react-redux";
-import { AnimationContext } from "../../pages/GamesPage/GameItemPage/AnimationContext";
 import Fade from "@material-ui/core/Fade";
-import { selectPageState } from "../../features/pageState/selectors";
+import {AnimationContext} from "../../pages/contexts/AnimationContext";
+import {Proceed} from "../../components/Proceed";
+import {selectPageState} from "../../features/pageState/selectors";
+import Grow from "@material-ui/core/Grow";
 
 export const Game = ({ item, clickBackHandler }) => {
   const [currentSetIdx, setCurrentSetIdx] = useState(0),
     sets = useSelector(selectAllSets),
     selectSet = React.useMemo(makeSelectSet, []),
     set = useSelector((state) => selectSet(state, sets[currentSetIdx])) || {},
-    [animate, setAnimate] = useState(true);
+    [animate, setAnimate] = useState(true),
+    pageState = useSelector(selectPageState);
+
 
   const SetTypes = {
     [GAME_TYPES.WORDS]: (
@@ -40,13 +44,15 @@ export const Game = ({ item, clickBackHandler }) => {
   ];
 
   return (
+    <>
     <AnimationContext.Consumer>
       {(animations) => {
-        const { toggleMainPageAnimation, toggleAnimation } = animations;
+        const { toggleGamePageAnimation, toggleAnimation } = animations.animationContextValue;
+        console.log(pageState)
         return (
           <section className={`${classes.gameWrapper}`}>
             <Box className={`gridElement ${classes.s1}`}>
-              <Fade in={animate}>
+              <Grow in={animate}>
                 <Box>
                   <Typography variant="h4" component="h1">
                     {set.name}
@@ -58,9 +64,9 @@ export const Game = ({ item, clickBackHandler }) => {
                     type: {set.type}
                   </Typography>
                 </Box>
-              </Fade>
+              </Grow>
               <IconButton
-                onClick={() => toggleMainPageAnimation(clickBackHandler)}
+                onClick={() => toggleGamePageAnimation(clickBackHandler)()}
                 className={classes.returnButton}
                 variant="contained"
                 color="primary"
@@ -80,5 +86,7 @@ export const Game = ({ item, clickBackHandler }) => {
         );
       }}
     </AnimationContext.Consumer>
-  );
+      {pageState === PAGE_STATE.LOADING && <Proceed wrapper={"main"} />}
+  </>
+);
 };

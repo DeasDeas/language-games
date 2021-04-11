@@ -8,6 +8,7 @@ import { makeSelectSetItems } from "../../../features/game/selectors";
 import { useSelector } from "react-redux";
 import { PLACEHOLDER_IMG } from "../../../vars/consts";
 import Fade from "@material-ui/core/Fade";
+import Grow from "@material-ui/core/Grow";
 
 export const PictureSet = ({ setId, animate }) => {
   const selectedSetItems = React.useMemo(makeSelectSetItems, []),
@@ -21,7 +22,7 @@ export const PictureSet = ({ setId, animate }) => {
 
   return (
     <Box className={classes.pictureSet}>
-      <Fade in={animate}>
+      <Grow in={animate}>
       <Box className={classes.pictures}>
         {items.map((item) => (
           <Picture
@@ -31,8 +32,8 @@ export const PictureSet = ({ setId, animate }) => {
           />
         ))}
       </Box>
-      </Fade>
-      <Fade in={animate}>
+      </Grow>
+      <Grow in={animate}>
       <Box className={classes.words}>
         {items.map((item) => {
           if (item.id === selectedItem) {
@@ -42,7 +43,7 @@ export const PictureSet = ({ setId, animate }) => {
           }
         })}
       </Box>
-      </Fade>
+      </Grow>
       <Box className={classes.setControls}>
         <Button
           className={classes.completeButton}
