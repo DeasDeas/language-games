@@ -44,3 +44,7 @@ export const ANIMATION_SPEED = {
   MEDIUM: 500,
   SLOW: 1000,
 }
+
+export const ITEM_TYPES = {
+  WORD: 'WORD'
+}
