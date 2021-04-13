@@ -93,7 +93,9 @@ const Picture = React.memo(({ item, handlers, word }) => {
     },
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
-      style: {background: !!monitor.isOver() && "var(--secondary-bg-color-darken)"}
+      style: {
+        background: !!monitor.isOver() && "var(--secondary-bg-color-darken)",
+      },
     }),
   });
 
@@ -143,11 +145,11 @@ const Picture = React.memo(({ item, handlers, word }) => {
 
 const Word = React.memo(({ item, selected }) => {
   const labelClasses = selected
-    ? `${classes.item} ${classes.item__selected} ${classes.word}`
-    : `${classes.item} ${classes.word}`;
+    ? `${classes.item} ${classes.item__selected} ${classes.word} ${classes.word__animateIn}`
+    : `${classes.item} ${classes.word} ${classes.word__animateIn}`;
 
   const { id, word } = item;
-  const [{ isDragging }, drag] = useDrag({
+  const [collectedProps, drag] = useDrag({
     item: {
       id,
       word,
@@ -155,15 +157,21 @@ const Word = React.memo(({ item, selected }) => {
     },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
+      animate: monitor.isDragging()
+        ? classes.word__animateOut
+        : classes.word__animateIn,
     }),
   });
-  const opacity = isDragging ? 0 : 1;
 
   return (
-    <label ref={drag} htmlFor={id} style={{ opacity }} className={labelClasses}>
+    <label ref={drag} htmlFor={id} {...collectedProps} className={`${labelClasses} ${collectedProps.animate}`}>
       <Tooltip title={item.word} aria-label={item.word}>
-        <Typography variant="body1" component="span">
-          {item.word}
+        <Typography
+          className={classes.wordContent}
+          variant="body1"
+          component="span"
+        >
+          {word}
         </Typography>
       </Tooltip>
     </label>

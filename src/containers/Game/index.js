@@ -47,7 +47,7 @@ export const Game = ({ item, clickBackHandler }) => {
     <AnimationContext.Consumer>
       {(animations) => {
         const { toggleGamePageAnimation, toggleAnimation } = animations.animationContextValue;
-        console.log(pageState)
+
         return (
           <section className={`${classes.gameWrapper}`}>
             <Box className={`gridElement ${classes.s1}`}>

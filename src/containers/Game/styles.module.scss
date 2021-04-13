@@ -77,10 +77,31 @@
         .word {
             padding: 2px;
             max-width: 100%;
-            max-height: 100%;
+            opacity: 0;
+            text-overflow: fade;
+            max-height: 40px;
             background: var(--secondary-bg-color);
             word-wrap: break-word;
             text-align: center;
+        }
+
+        .wordContent {
+            display: inline-block;
+            width: 100px;
+        }
+
+        .word__animateIn {
+            max-width: 100%;
+            opacity: 1;
+            transition-property: opacity, max-width;
+            transition-duration: 1s;
+        }
+
+        .word__animateOut {
+            max-width: 0;
+            opacity: 0;
+            transition-property: opacity, max-width;
+            transition-duration: 1s;
         }
 
         @media (max-width: $screen-md) {
@@ -138,7 +159,7 @@
                 padding: 5px;
                 box-sizing: border-box;
                 text-align: center;
-                transition: all .25s ease-in-out;
+                transition: all .5s ease-in;
 
                 &Inner {
                     display: inline-block;
