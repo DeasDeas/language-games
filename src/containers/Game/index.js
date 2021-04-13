@@ -10,7 +10,6 @@ import { IconButton } from "../../mui/themes";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { makeSelectSet, selectAllSets } from "../../features/game/selectors";
 import { useSelector } from "react-redux";
-import Fade from "@material-ui/core/Fade";
 import {AnimationContext} from "../../pages/contexts/AnimationContext";
 import {Proceed} from "../../components/Proceed";
 import {selectPageState} from "../../features/pageState/selectors";
@@ -27,10 +26,10 @@ export const Game = ({ item, clickBackHandler }) => {
 
   const SetTypes = {
     [GAME_TYPES.WORDS]: (
-      <WordSet animate={animate} setId={sets[currentSetIdx]} />
+      <WordSet animate={animate} set={set}  />
     ),
     [GAME_TYPES.PICTURES]: (
-      <PictureSet animate={animate} setId={sets[currentSetIdx]} />
+      <PictureSet animate={animate} set={set} />
     ),
   };
 
@@ -66,7 +65,7 @@ export const Game = ({ item, clickBackHandler }) => {
                 </Box>
               </Grow>
               <IconButton
-                onClick={() => toggleGamePageAnimation(clickBackHandler)()}
+                onClick={() => toggleGamePageAnimation(clickBackHandler)}
                 className={classes.returnButton}
                 variant="contained"
                 color="primary"

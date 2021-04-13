@@ -45,7 +45,7 @@
     grid-row-gap: 20px;
     height: 100%;
 
-    @media (max-width: 768px) {
+    @media (max-width: $screen-md) {
         grid-template-rows: 3fr;
     }
 
@@ -56,18 +56,23 @@
         grid-gap: 20px;
         grid-auto-rows: 15vh;
 
-        @media (max-width: 768px) {
+        @media (max-width: $screen-md) {
             grid-template-areas:
                 "p p";
+        }
+
+
+        @media (max-width: $screen-sm) {
+            grid-template-areas:
+                "p";
         }
     }
 
     .words {
         display: grid;
-        grid-template-areas:
-            "p p p p p p";
+        grid-template-columns:
+            repeat(6, minmax(100px, 200px));
         grid-gap: 10px;
-        grid-auto-rows: min-content;
 
         .word {
             padding: 2px;
@@ -78,7 +83,7 @@
             text-align: center;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: $screen-md) {
             display: none;
         }
     }
@@ -96,7 +101,7 @@
             position: relative;
             display: grid;
             grid-template: "image" 1fr
-                           "word" 0.35fr/1fr;
+                           "word" 0.35fr/minmax(100px, 600px);
             grid-gap: 5px;
             max-width: 100%;
             max-height: 100%;
@@ -109,6 +114,7 @@
                 width: 100%;
                 height: 100%;
                 overflow: hidden;
+                background: var(--secondary-bg-color);
             }
 
             img {
@@ -120,6 +126,8 @@
             }
 
             .word {
+                display: flex;
+                justify-content: center;
                 width: 100%;
                 height: 100%;
                 background: var(--secondary-bg-color);
@@ -130,6 +138,18 @@
                 padding: 5px;
                 box-sizing: border-box;
                 text-align: center;
+                transition: all .25s ease-in-out;
+
+                &Inner {
+                    display: inline-block;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    width: 90%;
+                }
+            }
+
+            .word:hover {
+                background: var(--secondary-bg-color-darken);
             }
         }
     }

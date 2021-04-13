@@ -10,7 +10,7 @@ export const makeSelectSet = () =>
   createSelector(
     (state) => state.game,
     (_, setId) => setId,
-    (game, setId) => game.sets.byId[setId]
+    (game, setId) => game.sets.byIds[setId]
   );
 
 export const makeSelectSetItems = () =>
@@ -24,8 +24,8 @@ export const makeSelectSetItems = () =>
         return combiner;
       }, []);
 
-      if (game.sets.byId[setId])
-        switch (game.sets.byId[setId].type) {
+      if (game.sets.byIds[setId])
+        switch (game.sets.byIds[setId].type) {
           case GAME_TYPES.PICTURES: {
             items.forEach((item, idx, self) => {
               const position = item.position;
