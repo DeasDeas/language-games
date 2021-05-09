@@ -3,7 +3,7 @@ import Loader from "react-loader-spinner";
 import {createPortal} from "react-dom";
 
 
-export const Proceed = ({ className = 'root-portal', el = 'div', wrapper="body"}) => {
+export const Proceed = ({ className = 'root-portal', el = 'div', wrapper="main"}) => {
 	const [container] = useState(document.createElement(el))
 
 	container.classList.add(className)

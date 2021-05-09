@@ -2,7 +2,7 @@
 
 .gameWrapper {
     display: grid;
-    grid-template-rows: 0.25fr 3.5fr 0.25fr;
+    grid-template-rows: 0.25fr 3.5fr min-content;
     grid-auto-rows: min-content;
     grid-row-gap: 10px;
 
@@ -20,7 +20,7 @@
         display: flex;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: $screen-md) {
         grid-template-rows: 0.25fr 3.5fr;
     }
 }
@@ -55,10 +55,27 @@
             "p p p p";
         grid-gap: 20px;
         grid-auto-rows: 15vh;
+        grid-auto-columns: minmax(150px, 1fr);
 
-        @media (max-width: $screen-md) {
+        .doneOverlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+
+            &__correct {
+                background: rgba(0, 255, 82, 0.25);
+            }
+
+            &__incorrect {
+                background: rgb(255, 11, 0, 0.25);
+            }
+        }
+
+        @media (max-width: $screen-md-max) {
             grid-template-areas:
                 "p p";
+            grid-auto-columns: 1fr;
         }
 
 
@@ -83,6 +100,12 @@
             background: var(--secondary-bg-color);
             word-wrap: break-word;
             text-align: center;
+            margin: auto 0;
+            user-select: none;
+        }
+
+        .word:hover {
+            background: var(--secondary-bg-color-darken);
         }
 
         .wordContent {
@@ -93,14 +116,14 @@
         .word__animateIn {
             max-width: 100%;
             opacity: 1;
-            transition-property: opacity, max-width;
+            transition-property: opacity, max-width, background-color;
             transition-duration: 1s;
         }
 
         .word__animateOut {
             max-width: 0;
             opacity: 0;
-            transition-property: opacity, max-width;
+            transition-property: opacity, max-width, background-color;
             transition-duration: 1s;
         }
 
@@ -108,8 +131,6 @@
             display: none;
         }
     }
-
-    $box-shadow: 0 0 2px 2px var(--shadow-color);
 
     .item {
         position: relative;
@@ -136,6 +157,8 @@
                 height: 100%;
                 overflow: hidden;
                 background: var(--secondary-bg-color);
+                background-position: 0 0;
+                animation: loading 8s infinite linear;
             }
 
             img {
@@ -160,6 +183,7 @@
                 box-sizing: border-box;
                 text-align: center;
                 transition: all .5s ease-in;
+                user-select: none;
 
                 &Inner {
                     display: inline-block;
@@ -211,8 +235,9 @@
     .imageWrapper {
         overflow: hidden;
         position: relative;
-        width: 200px;
+        width: 100%;
         height: 150px;
+        margin: auto;
 
         img {
             position: absolute;
@@ -265,4 +290,17 @@
         grid-template-areas: "complete";
         grid-template-columns: 1fr;
     }
+}
+
+.forms {
+    grid-area: a;
+}
+
+.addSet {
+    grid-area: b;
+}
+
+.addSetButton {
+    width: 48px;
+    height: 48px;
 }

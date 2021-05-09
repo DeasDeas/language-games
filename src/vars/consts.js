@@ -8,9 +8,9 @@ export const PAGE_STATE = {
 };
 
 export const GAME_TYPES = {
-  WORDS: "WORDS",
-  PICTURES: "PICTURES",
-  SOMETHING: "SOMETHING",
+  PICTURES: 1,
+  WORDS: 2,
+  MIXED: 3,
 };
 
 export const GAME_TYPES_PATHS = {
@@ -36,7 +36,7 @@ export const ITEM_STATUS = {
 export const PLACEHOLDER_IMG = {
   src:
     "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png",
-  alt:"placeholder"
+  alt:" "
 };
 
 export const ANIMATION_SPEED = {
@@ -47,4 +47,17 @@ export const ANIMATION_SPEED = {
 
 export const ITEM_TYPES = {
   WORD: 'WORD'
+}
+
+export const LOADING_STATE = {
+  IDLE: "IDLE",
+  PENDING: "PENDING",
+  FULFILLED: "FULFILLED",
+  REJECTED: "REJECTED"
+}
+
+export const BLANK_MESSAGE = {
+  texts: '',
+  type: "blank",
+  status: 0,
 }

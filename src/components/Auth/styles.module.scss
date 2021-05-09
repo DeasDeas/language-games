@@ -17,3 +17,16 @@
 .textWrapper {
   margin-bottom: 20px;
 }
+
+.authSelection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  border-radius: 5px;
+  padding: 20px;
+  background: var(--primary-bg-color);
+  box-sizing: border-box;
+}

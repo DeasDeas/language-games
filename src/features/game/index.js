@@ -44,7 +44,7 @@ const initialState = {
         },
         word: "sun",
         set: "set-1",
-        position: 0,
+        position: {picture:1, word:0},
       },
       "item-2": {
         id: "item-2",
@@ -55,7 +55,7 @@ const initialState = {
         },
         word: "river",
         set: "set-1",
-        position: 2,
+        position: {picture:0, word:2},
       },
       "item-3": {
         id: "item-3",
@@ -66,7 +66,7 @@ const initialState = {
         },
         word: "sky",
         set: "set-1",
-        position: 1,
+        position: {picture:3, word:1},
       },
       "item-4": {
         id: "item-4",
@@ -77,7 +77,7 @@ const initialState = {
         },
         word: "rock",
         set: "set-1",
-        position: 3,
+        position: {picture:1, word:3},
       },
     },
     allIds: ["item-1", "item-2", "item-3", "item-4"],

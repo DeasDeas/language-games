@@ -1,47 +1,54 @@
-import React, { createRef } from "react";
-import { unwrapResult } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-
-import { registerUser } from "../../../features/auth";
+import React, { createRef, useState } from "react";
 
 import { Form } from "../../Form";
 import { Button } from "../../../mui/themes";
+import Fade from "@material-ui/core/Fade";
+import { LOADING_STATE } from "../../../vars/consts";
+import Box from "@material-ui/core/Box";
+import { Message } from "../../Message";
+import {register} from "../../../api/auth";
 
-export const AuthRegister = () => {
-  let history = useHistory();
-  const username = createRef();
-  const password = createRef();
-  const confirmPassword = createRef();
-  const email = createRef();
-  const dispatch = useDispatch();
+export const AuthRegister = (props) => {
+  const usernameRef = createRef(),
+    passwordRef = createRef(),
+    confirmPasswordRef = createRef(),
+    emailRef = createRef(),
+    [animate, setAnimate] = useState(false),
+    [animateMessage, setAnimateMessage] = useState(false),
+    { toggleAnimation } = props,
+    [message, setMessage] = useState({ texts: [""], type: "default", status: 0 }),
+    [loadingState, setLoadingState] = useState(LOADING_STATE.IDLE);
+
+  React.useEffect(() => {
+    !animate && props.toggleAnimation(setAnimate)();
+  }, [animate]);
 
   const registerForm = {
-    byId: {
+    byIds: {
       login: {
         id: "login",
-        ref: username,
+        ref: usernameRef,
         label: "login",
         required: true,
       },
       password: {
         id: "password",
         type: "password",
-        ref: password,
+        ref: passwordRef,
         label: "password",
         required: true,
       },
       "password-confirm": {
         id: "password-confirm",
         type: "password",
-        ref: confirmPassword,
+        ref: confirmPasswordRef,
         label: "confirm password",
         required: true,
       },
       "e-mail": {
         id: "email",
         type: "email",
-        ref: email,
+        ref: emailRef,
         label: "e-mail",
         required: true,
       },
@@ -51,34 +58,42 @@ export const AuthRegister = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    try {
-      const resultAction = await dispatch(
-        registerUser({
-          username: username.current.value,
-          password1: password.current.value,
-          password2: confirmPassword.current.value,
-          email: email.current.value,
-        })
-      );
-      unwrapResult(resultAction);
-      history.push("/");
-    } catch (err) {
-      password.current.value = "";
-      confirmPassword.current.value = "";
+
+    setLoadingState(LOADING_STATE.PENDING);
+
+    const registerData = {
+      username: usernameRef.current.value,
+      password1: passwordRef.current.value,
+      password2: confirmPasswordRef.current.value,
+      email: emailRef.current.value,
+    };
+
+    const { message } = await register(registerData);
+    if (message.status !== 200) {
+      e.target[4].value = null;
+      e.target[6].value = null;
     }
+
+
+    toggleAnimation(setAnimateMessage)(() => setMessage(message));
   };
 
   return (
-    <form
-      method="post"
-      name="register"
-      onSubmit={(e) => submitHandler(e)}
-    >
-      <Form form={registerForm}>
-        <Button variant="contained" color="primary" type="submit">
-          Register
-        </Button>
-      </Form>
-    </form>
+    <>
+      <Fade in={animate}>
+        <form method="post" name="register" onSubmit={(e) => submitHandler(e)}>
+          <Form form={registerForm}>
+            <Button variant="contained" color="primary" type="submit">
+              Register
+            </Button>
+          </Form>
+        </form>
+      </Fade>
+      <Fade in={animateMessage}>
+        <Box>
+          <Message type={message.type}>{message.texts}</Message>
+        </Box>
+      </Fade>
+    </>
   );
 };

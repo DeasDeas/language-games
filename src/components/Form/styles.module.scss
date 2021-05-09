@@ -16,10 +16,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 20px auto;
+  margin: 0 auto;
   width: 100%;
-  max-width: 760px;
-  min-height: 200px;
   border-radius: 5px;
   padding: 20px;
+  background: var(--primary-bg-color);
+  box-sizing: border-box;
 }

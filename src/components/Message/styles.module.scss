@@ -1,0 +1,19 @@
+.messageBox {
+    width: 100%;
+    height: min-content;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 4px;
+    color: white;
+    margin: 10px auto 0;
+    grid-gap: 10px;
+}
+
+.messageBox__error {
+    background: rgba(255, 0, 0, 0.45);
+}
+
+.messageBox__default {
+    background: rgb(27, 138, 48, 0.45);
+}

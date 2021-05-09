@@ -12,10 +12,16 @@ import {useDispatch, useSelector} from "react-redux";
 import { selectSortedInstances } from "../../features/gameInstances/selectors";
 import {GAME_TYPES_PATHS, PAGE_STATE} from "../../vars/consts";
 import {setPageState} from "../../features/pageState";
+import {getItems} from "../../api/items";
+import {useFetchData} from "../../features/hooks/useFetchData";
+import {setItems} from "../../features/gameInstances";
+import {selectCurrentUser} from "../../features/auth/selectors";
 
 export const GamesPage = () => {
   let history = useHistory(),
     { url } = useRouteMatch();
+
+  const user = useSelector(selectCurrentUser)
 
   const clickItemHandler = (e) => {
     history.push(e.target.getAttribute("data-location"));
@@ -28,6 +34,8 @@ export const GamesPage = () => {
       (pageState) =>
         dispatch(setPageState({ newState: pageState })),
     ];
+
+  useFetchData(() => getItems(`?ordering=-date_created&private=false|owner=${user.id}`), setItems)
 
   return (
     <Switch>
@@ -80,7 +88,7 @@ const makeRoutesToInstances = (gameInstances, url) => Object.keys(gameInstances)
     ...combiner,
     ...gameInstances[type].map((item) => (
       <Route path={`${url}${GAME_TYPES_PATHS[type]}/${item.id}`} key={item.id}>
-        <GameItemPage item={item} />
+        <GameItemPage item={item}/>
       </Route>
     )),
   ],
@@ -92,6 +100,7 @@ const makeRoutesToSelectors = (gameInstances, url) => Object.keys(gameInstances)
     ...combiner,
     <Route path={url + GAME_TYPES_PATHS[type]} key={type}>
       <GamesSelector
+        type={type}
         title={GAME_TYPES_PATHS[type]}
         items={gameInstances[type]}
       />

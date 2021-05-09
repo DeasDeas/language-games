@@ -1,8 +1,8 @@
 
 export const paths = {
 	auth: "/auth",
-	login: "/auth/login",
-	register: "/auth/register",
+	login: "/login",
+	register: "/register",
 	gamesPage: "/games-page",
 	gamesSelection: "/games-selection",
 	pictureGames: "/picture-games",

@@ -1,0 +1,30 @@
+@import "../../vars/vars";
+
+.placeholder {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: var(--secondary-bg-color);
+    transition: background-color .5s ease-in;
+
+    .addIcon {
+        font-size: 7rem;
+        color: var(--secondary-bg-color-darken);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: color, font-size .5s ease-in;
+    }
+}
+
+.placeholder:hover {
+    background: var(--secondary-bg-color-darken);
+    .addIcon {
+        color: var(--secondary-bg-color);
+    }
+}
+
+.placeholder__selected {
+    box-shadow: $box-shadow;
+}

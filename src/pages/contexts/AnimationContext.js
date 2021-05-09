@@ -1,14 +1,13 @@
 import React from "react";
 
 export const defaultAnimationContextValue = {
-	toggleAnimation: (timeout) => (setAnimate) => (callback = () => {}) => {
-		console.log(timeout)
+	toggleAnimation: (time) => (setAnimate) => (callback = () => {}) => {
 		setAnimate(false);
 		setTimeout(() => {
 			setAnimate(true);
 			return callback();
-		}, timeout);
-	},
+		}, time);
+	}
 };
 
 export const AnimationContext = React.createContext({

@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { Box } from "@material-ui/core";
 import classes from "./styles.module.css";
 import { Footer } from "../../components/Footer";
 import { paths } from "../../vars/paths";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   AnimationContext,
   defaultAnimationContextValue,
 } from "../contexts/AnimationContext";
 import { ANIMATION_SPEED } from "../../vars/consts";
+import { selectCurrentUser } from "../../features/auth/selectors";
+import { setCurrentUser } from "../../features/auth";
+import { getUser } from "../../api/auth";
+import { useFetchData } from "../../features/hooks/useFetchData";
 
 export const TemplatePage = (props) => {
   const headerItems = [
@@ -18,8 +22,10 @@ export const TemplatePage = (props) => {
     ],
     headerProps = {
       menuLinks: headerItems,
-      user: useSelector((state) => state.auth.user),
+      user: useSelector((state) => selectCurrentUser(state)),
     };
+
+  useFetchData(getUser, setCurrentUser);
 
   const [animationContext, setAnimationContext] = useState({
     animationContextValue: {
@@ -35,7 +41,11 @@ export const TemplatePage = (props) => {
     <AnimationContext.Provider
       value={{
         ...animationContext,
-        setAnimationContext: setAnimationContext,
+        setAnimationContextValue: (animationContextValue) =>
+          setAnimationContext({
+            ...animationContext,
+            animationContextValue: animationContextValue,
+          }),
       }}
     >
       <Box>

@@ -24,11 +24,11 @@
 .templateB {
     position: relative;
     display: grid;
-    grid-template: "section aside" 1fr/1fr 0.25fr;
+    grid-template: "section aside" 1fr/1fr 0.3fr;
     grid-column-gap: 20px;
     width: 100%;
 
-    @media (max-width: $screen-sm-max) {
+    @media (max-width: $screen-lg) {
         grid-template:
             "section" 1fr
             "aside" 0.5fr/1fr;
@@ -44,7 +44,7 @@
 
     @media (max-width: $screen-sm-max) {
         grid-template:
-            "section" 1fr;
+            "section" 1fr/1fr;
         grid-row-gap: 10px;
     }
 }

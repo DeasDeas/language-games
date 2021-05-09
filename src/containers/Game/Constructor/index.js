@@ -1,89 +1,297 @@
-import React, {useState} from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Box from "@material-ui/core/Box";
 import classes from "../styles.module.css";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
-import {Button, IconButton} from "../../../mui/themes";
+import { IconButton } from "../../../mui/themes";
 import InputLabel from "@material-ui/core/InputLabel";
 import TextField from "@material-ui/core/TextField";
-import { PAGE_STATE } from "../../../vars/consts";
+import { PAGE_STATE, PLACEHOLDER_IMG } from "../../../vars/consts";
 import Typography from "@material-ui/core/Typography";
-import SaveIcon from '@material-ui/icons/Save';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import SaveIcon from "@material-ui/icons/Save";
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import { useSelector } from "react-redux";
+import { selectPageState } from "../../../features/pageState/selectors";
+import { GameContext } from "../../../pages/contexts/GameContext";
+import { selectItem, selectSetById } from "../../../features/game/selectors";
+import { Add, Shuffle } from "@material-ui/icons";
+import { selectInstanceById } from "../../../features/gameInstances/selectors";
+import { cloneDeep } from "lodash";
 
-const offsetTop = (x) => { return { marginTop: x }}
+const offsetTop = (x) => {
+  return { marginTop: x };
+};
 
-export const Constructor = ({ gameState }) => {
+export const Constructor = ({ taskId }) => {
+  const gameState = useSelector(selectPageState);
+
   return (
-    gameState === PAGE_STATE.PREPARING && <></>,
-    gameState === PAGE_STATE.RUNNING && (<>
-	    <SetControlsForm />
-	    <ItemChangeForm />
-    </>)
+    <GameContext.Consumer>
+      {(gameContext) => {
+        const { setId, itemId } = gameContext.gameContextValue;
+
+        return gameState === PAGE_STATE.PREPARING ? (
+          <Box className={`gridElement ${classes.forms}`}>
+            <TaskControlsForm itemId={taskId} />
+          </Box>
+        ) : (
+          <>
+            <Box className={`gridElement ${classes.forms}`}>
+              <SetControlsForm setId={setId} />
+              <ItemChangeForm itemId={itemId} />
+            </Box>
+            <Box>
+              <IconButton
+                className={classes.addSetButton}
+                variant="contained"
+                color="green"
+              >
+                <Add style={{ fontSize: "3rem" }} />
+              </IconButton>
+            </Box>
+          </>
+        );
+      }}
+    </GameContext.Consumer>
   );
 };
 
-const SetControlsForm = () => {
+const makeHandleTextFieldChange = (formState, setFormState) => (event) => {
+  const newState = cloneDeep(formState);
 
-	return (
-  <>
-	  <Box className={classes.asideChangeForm} component="form">
-		  <Typography variant="body1" component="span">
-			  {"Сет: "}
-		  </Typography>
-		  <Typography variant="h6" component="span">
-			  "SET 1"
-		  </Typography>
-		  <TextField
-			  style={offsetTop("5px")}
-			  className={`${classes.inputField}`}
-			  label="Title"
-		  />
-		  <TextField
-			  style={offsetTop("5px")}
-			  className={`${classes.inputField} ${classes.offsetTop1X}`}
-			  label="Subtitle"
-			  multiline={true}
-			  spellCheck={false}
-		  />
-		  <Box className={`${classes.offsetTop4X} ${classes.controls}`}>
-			  <IconButton className={classes.iconButton} variant="contained" color="primary">
-				  <SaveIcon/>
-			  </IconButton>
-			  <Button variant="contained" color="red">
-				  УДАЛИТЬ СЕТ
-			  </Button>
-		  </Box>
-	  </Box>
-  </>);
+  switch (event.target.getAttribute("data-value")) {
+    case "name": {
+      newState.name = event.target.value;
+      setFormState(newState);
+      return;
+    }
+    case "description": {
+      newState.description = event.target.value;
+      setFormState(newState);
+      return;
+    }
+    case "image": {
+      newState.image.src = event.target.value;
+      setFormState(newState);
+      return;
+    }
+    case "word": {
+      newState.word = event.target.value;
+      setFormState(newState);
+      return;
+    }
+    default: {
+      return;
+    }
+  }
 };
 
-const ItemChangeForm = () => {
-	const [type, setType] = useState("10");
+const TaskControlsForm = ({ itemId }) => {
+  const gameInstance = useSelector((state) =>
+      selectInstanceById(state, itemId)
+    ),
+    [formState, setFormState] = useState({
+      name: gameInstance ? gameInstance.name : "",
+      description: gameInstance ? gameInstance.description : "",
+      type: "",
+    });
 
-  const handleChange = (event) => {
-    setType(event.target.value);
-  };
+  useEffect(() => {
+    setFormState({
+      name: gameInstance ? gameInstance.name : "",
+      description: gameInstance ? gameInstance.description : "",
+      type: "",
+    });
+  }, [itemId]);
+
+  const handleTextFieldChange = makeHandleTextFieldChange(
+    formState,
+    setFormState
+  );
 
   return (
     <>
-      <Box className={classes.asideChangeForm} component="form">
-        <Box className={classes.imageWrapper}>
-          <img
-            src={"https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"}
-            alt="1"
-          />
-        </Box>
-
+      <Box
+        className={classes.asideChangeForm}
+        onChange={handleTextFieldChange}
+        component="form"
+      >
+        <Typography variant="body1" component="span">
+          {"Игра: "}
+        </Typography>
+        <Typography variant="h6" component="span">
+          {gameInstance.name}
+        </Typography>
         <TextField
-	        style={offsetTop("5px")}
-	        className={`${classes.inputField}`}
-          label="Image"
+          style={offsetTop("5px")}
+          className={`${classes.inputField}`}
+          label="Name"
+          value={formState.name}
+          inputProps={{ "data-value": "name" }}
+          multiline={true}
+          spellCheck={false}
         />
         <TextField
-	        style={offsetTop("5px")}
-	        className={`${classes.inputField}`}
+          style={offsetTop("5px")}
+          className={`${classes.inputField} ${classes.offsetTop1X}`}
+          label="Description"
+          value={formState.description}
+          multiline={true}
+          spellCheck={false}
+          inputProps={{ "data-value": "description" }}
+        />
+        <Box className={`${classes.offsetTop4X} ${classes.controls}`}>
+          <IconButton
+            className={classes.iconButton}
+            variant="contained"
+            color="primary"
+          >
+            <SaveIcon />
+          </IconButton>
+          <IconButton
+            className={classes.iconButton}
+            variant="contained"
+            color="red"
+          >
+            <DeleteForeverIcon />
+          </IconButton>
+        </Box>
+      </Box>
+    </>
+  );
+};
+
+const SetControlsForm = ({ setId }) => {
+  const set = useSelector((state) => selectSetById(state, setId)),
+    [formState, setFormState] = useState({
+      name: set ? set.name : "",
+      description: set ? set.description : "",
+      type: "",
+    });
+
+  useEffect(() => {
+    setFormState({
+      name: set ? set.name : "",
+      description: set ? set.description : "",
+      type: "",
+    });
+  }, [setId]);
+
+  const handleTextFieldChange = makeHandleTextFieldChange(
+    formState,
+    setFormState
+  );
+
+  return (
+    <>
+      <Box
+        className={classes.asideChangeForm}
+        onChange={handleTextFieldChange}
+        component="form"
+      >
+        <Typography variant="body1" component="span">
+          {"Сет: "}
+        </Typography>
+        <Typography variant="h6" component="span">
+          {set && set.name}
+        </Typography>
+        <TextField
+          style={offsetTop("5px")}
+          className={`${classes.inputField}`}
+          label="Name"
+          value={formState.name}
+          inputProps={{ "data-value": "name" }}
+        />
+        <TextField
+          style={offsetTop("5px")}
+          className={`${classes.inputField} ${classes.offsetTop1X}`}
+          label="Description"
+          value={formState.description}
+          multiline={true}
+          spellCheck={false}
+          inputProps={{ "data-value": "description" }}
+        />
+        <Box className={`${classes.offsetTop4X} ${classes.controls}`}>
+          <IconButton
+            className={classes.iconButton}
+            variant="contained"
+            color="primary"
+          >
+            <SaveIcon />
+          </IconButton>
+          <IconButton
+            className={classes.iconButton}
+            variant="contained"
+            color="orange"
+          >
+            <Shuffle />
+          </IconButton>
+          <IconButton
+            className={classes.iconButton}
+            variant="contained"
+            color="red"
+          >
+            <DeleteForeverIcon />
+          </IconButton>
+        </Box>
+      </Box>
+    </>
+  );
+};
+
+const ItemChangeForm = ({ itemId }) => {
+  const item = useSelector((state) => selectItem(state, itemId)),
+    [type, setType] = useState("10"),
+    [formState, setFormState] = useState({
+      image: PLACEHOLDER_IMG,
+      word: item ? item.word : "",
+      type: "",
+    }),
+    isAddItem = itemId === "add-item";
+
+  const handleTextFieldChange = makeHandleTextFieldChange(
+    formState,
+    setFormState
+  );
+
+  const handleTypeChange = (event) => {
+    setType(event.target.value);
+  };
+
+  useEffect(() => {
+    setFormState({
+      image: item ? item.image : PLACEHOLDER_IMG,
+      word: item ? item.word : "",
+      type: "",
+    });
+  }, [itemId]);
+
+  return (
+    <Fragment>
+      <Box
+        className={classes.asideChangeForm}
+        onChange={handleTextFieldChange}
+        component="form"
+      >
+        <Box className={classes.imageWrapper}>
+          <picture>
+            <img {...PLACEHOLDER_IMG} />
+            <img {...formState.image} />
+          </picture>
+        </Box>
+        <TextField
+          style={offsetTop("5px")}
+          className={`${classes.inputField}`}
+          label="Image"
+          value={formState.image !== PLACEHOLDER_IMG ? formState.image.src : ""}
+          inputProps={{ "data-value": "image" }}
+        />
+        <TextField
+          style={offsetTop("5px")}
+          className={`${classes.inputField}`}
           label="Word"
+          value={formState.word}
+          inputProps={{ "data-value": "word" }}
         />
         <Box className={`${classes.selectorWrapper} ${classes.offsetTop2X}`}>
           <InputLabel id="type-selector" shrink>
@@ -93,20 +301,40 @@ const ItemChangeForm = () => {
             className={classes.typeSelector}
             labelId="type-selector"
             value={type}
-            onChange={handleChange}
+            onChange={handleTypeChange}
+            disabled
           >
             <MenuItem value={10}>All</MenuItem>
           </Select>
         </Box>
         <Box className={`${classes.offsetTop4X} ${classes.controls}`}>
-	        <IconButton className={classes.iconButton} variant="contained" color="primary">
-            <SaveIcon/>
+          {isAddItem ? (
+            <IconButton
+              className={classes.iconButton}
+              variant="contained"
+              color="green"
+            >
+              <Add />
+            </IconButton>
+          ) : (
+            <IconButton
+              className={classes.iconButton}
+              variant="contained"
+              color="primary"
+            >
+              <SaveIcon />
+            </IconButton>
+          )}
+          <IconButton
+            className={classes.iconButton}
+            variant="contained"
+            color="red"
+            disabled={isAddItem}
+          >
+            <DeleteForeverIcon />
           </IconButton>
-	        <IconButton className={classes.iconButton} variant="contained" color="red">
-		        <DeleteForeverIcon/>
-	        </IconButton>
         </Box>
       </Box>
-    </>
+    </Fragment>
   );
 };

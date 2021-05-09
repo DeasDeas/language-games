@@ -18,7 +18,7 @@ export const Form = (props) => {
 };
 
 const createForm = (textInputs) => {
-  return textInputs.allIds.map((id) => customTextInput(textInputs.byId[id]));
+  return textInputs.allIds.map((id) => customTextInput(textInputs.byIds[id]));
 };
 
 function customTextInput({
@@ -26,10 +26,11 @@ function customTextInput({
   type = "text",
   variant = "outlined",
   label = "id",
-  ref,
+  ref = null,
   required = false,
   autoComplete = "of",
   onChange,
+  value,
 }) {
   const prefs = {
     id: id,

@@ -1,3 +1,6 @@
+@import "../../../vars/vars";
+
+
 .creator {
     position: absolute;
     bottom: 20px;
@@ -7,4 +10,26 @@
 .controls {
     margin-top: 20px;
     width: 100%;
+}
+
+.constructorButton {
+    position: absolute;
+    width: 36.5px;
+    height: 36.5px;
+    top: 20px;
+    right: 20px;
+}
+
+.constructor {
+    display: grid;
+    grid-template:
+        "a" 1fr
+        "b" 48px/1fr;
+    grid-gap: 10px;
+
+    @media (max-width: $screen-md) {
+        grid-template:
+            "b" 48px/48px
+            "a" 1fr/1fr;
+    }
 }

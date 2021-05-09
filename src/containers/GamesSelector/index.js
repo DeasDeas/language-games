@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useRouteMatch } from "react-router-dom";
-import { ItemSelector } from './ItemSeletor'
+import { ItemSelector } from "./ItemSeletor";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../features/auth/selectors";
+import {ANIMATION_SPEED} from "../../vars/consts";
 
 export const GamesSelector = (props) => {
   let history = useHistory();
@@ -8,15 +11,21 @@ export const GamesSelector = (props) => {
     [pagination, setPagination] = useState({}),
     [animateListItem, setAnimateListItem] = useState(true),
     [loading, setLoading] = useState(false),
-    animationSpeed = 250,
-    { url } = useRouteMatch();
+    animationSpeed = ANIMATION_SPEED.QUICK,
+    { url } = useRouteMatch(),
+    user = useSelector(selectCurrentUser);
+
+  useEffect(() => {
+    setAnimateListItem(false);
+    setTimeout(() => setAnimateListItem(true), animationSpeed);
+  }, []);
 
   useEffect(() => {
     setPagination({
       startIdx: 0,
       items: 6,
     });
-    }, [props.items]);
+  }, [props.items]);
 
   const handleListScroll = (event) => {
     const direction = event.currentTarget.getAttribute("data-value");
@@ -52,18 +61,17 @@ export const GamesSelector = (props) => {
   const newProps = {
     ...props,
     handlers: {
-      "handleListItemClick":handleListItemClick,
-      "handleListScroll":handleListScroll,
+      handleListItemClick: handleListItemClick,
+      handleListScroll: handleListScroll,
     },
-    pagination:pagination,
+    pagination: pagination,
     flags: {
-      animateListItem:animateListItem,
-      loading:loading,
+      animateListItem: animateListItem,
+      loading: loading,
     },
-    selectedItemId:selectedItemId,
-  }
+    selectedItemId: selectedItemId,
+    isAuthenticated: !!user.id,
+  };
 
-  return (
-    <ItemSelector {...newProps}/>
-  );
+  return <ItemSelector {...newProps} />;
 };

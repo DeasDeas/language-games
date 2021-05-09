@@ -1,0 +1,6 @@
+.authPage {
+    display: grid;
+    grid-template: "a" min-content
+                   "b" 0.25fr/minmax(0, 760px);
+    margin: 0 auto;
+}

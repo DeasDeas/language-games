@@ -23,12 +23,12 @@ export const Stepper = ({length=10, stepForward, stepBackward}) => {
 
 	const handleNext = () => {
 		setActiveStep((prevActiveStep) => prevActiveStep + 1);
-		stepForward && stepForward();
+		stepForward();
 	};
 
 	const handleBack = () => {
 		setActiveStep((prevActiveStep) => prevActiveStep - 1);
-		stepBackward && stepBackward();
+		stepBackward();
 	};
 
 	return (
