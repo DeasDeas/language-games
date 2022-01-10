@@ -48,3 +48,18 @@
         grid-row-gap: 10px;
     }
 }
+
+.rowContainer {
+    display: flex;
+    justify-content: space-between;
+    width: available;
+}
+
+.controlsButton {
+    width: 36.5px;
+    height: 36.5px;
+}
+
+.controlsButton + .controlsButton {
+    margin-left: 10px;
+}

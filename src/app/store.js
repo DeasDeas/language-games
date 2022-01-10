@@ -12,7 +12,7 @@ import {
 import storage from "redux-persist/lib/storage";
 
 import authReducer from "../features/auth";
-import gameInstanceReducer from "../features/gameInstances";
+import gameInstanceReducer from "../features/task";
 import gameReducer from "../features/game";
 import pageStateReducer from "../features/pageState";
 
@@ -29,7 +29,7 @@ const persistedReducer = persistReducer(
   persistConfig,
   combineReducers({
     auth: authReducer,
-    gameInstances: gameInstanceReducer,
+    tasks: gameInstanceReducer,
     game: gameReducer,
     pageState: pageStateReducer,
   })

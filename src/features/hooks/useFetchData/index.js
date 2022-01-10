@@ -9,11 +9,12 @@ export const useFetchData = (request, actionCreator) => {
   useEffect(() => {
     (async () => {
       const req = await request();
+
       setMessages(req.message);
       dispatch(actionCreator(req.data));
       setDataReceived(true);
     })();
-  }, []);
+  }, [actionCreator]);
 
   return messages
 };

@@ -11,8 +11,8 @@ import { Add } from "@material-ui/icons";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import {useDispatch} from "react-redux";
-import {addItems} from "../../api/items";
-import {addItemInstance} from "../../features/gameInstances";
+import {addTask as addTaskRequest} from "../../api/tasks";
+import {addTask} from "../../features/task";
 import {BLANK_MESSAGE} from "../../vars/consts";
 import {Message} from "../../components/Message";
 
@@ -22,6 +22,7 @@ export function CreateTaskDialog({ type }) {
     [description, setDescription] = useState(""),
     [isPrivate, setIsPrivate] = useState(true),
     [message, setMessage] = useState(BLANK_MESSAGE),
+    [createButtonPressed, setCreateButtonPressed] = useState(false),
     dispatch = useDispatch();
 
   const handleClickOpen = () => {
@@ -34,6 +35,7 @@ export function CreateTaskDialog({ type }) {
     setDescription("");
     setIsPrivate(true);
     setMessage(BLANK_MESSAGE)
+    setCreateButtonPressed(false)
   };
 
   const handleCheckboxChange = () => {
@@ -41,13 +43,16 @@ export function CreateTaskDialog({ type }) {
   }
 
   const handleSubmit = async () => {
-    const response = await addItems({name, description, isPrivate, type})
+    if (createButtonPressed)
+      return
+
+    const response = await addTaskRequest({name, description, isPrivate, type})
     setMessage(response.message)
     if (response.message.status === 200) {
-      console.log(response)
-      dispatch(addItemInstance({...response.data}))
+      dispatch(addTask({...response.data}))
       handleClose()
     }
+    setCreateButtonPressed(true)
   };
 
   return (
@@ -97,7 +102,7 @@ export function CreateTaskDialog({ type }) {
         <DialogActions>
           <Button
             onClick={() => {
-              handleSubmit();
+              handleSubmit()
             }}
             color="primary"
           >

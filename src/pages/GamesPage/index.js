@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import Box from "@material-ui/core/Box";
 import classes from "./styles.module.css";
 import "../styles.css";
@@ -8,38 +8,40 @@ import Card from "@material-ui/core/Card";
 import { Route, Switch, useHistory, useRouteMatch } from "react-router-dom";
 import { GamesSelector } from "../../containers/GamesSelector";
 import { GameItemPage } from "./GameItemPage";
-import {useDispatch, useSelector} from "react-redux";
-import { selectSortedInstances } from "../../features/gameInstances/selectors";
-import {GAME_TYPES_PATHS, PAGE_STATE} from "../../vars/consts";
-import {setPageState} from "../../features/pageState";
-import {getItems} from "../../api/items";
-import {useFetchData} from "../../features/hooks/useFetchData";
-import {setItems} from "../../features/gameInstances";
-import {selectCurrentUser} from "../../features/auth/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import { selectSortedTasks } from "../../features/task/selectors";
+import {  GAME_TYPES_PATHS, PAGE_STATE  } from "../../vars/consts";
+import {  setPageState  } from "../../features/pageState";
+import {  getTasks  } from "../../api/tasks";
+import {  useFetchData  } from "../../features/hooks/useFetchData";
+import {  setTask } from "../../features/task";
+import {  selectCurrentUser } from "../../features/auth/selectors";
 
 export const GamesPage = () => {
   let history = useHistory(),
     { url } = useRouteMatch();
 
-  const user = useSelector(selectCurrentUser)
+  const user = useSelector(selectCurrentUser),
+      filter = user.id ? `?ordering=-date_created&filters=(private%253Dfalse)%7C(owner%3D${user.id})` : ""
+
+  useFetchData(() => getTasks(filter), setTask);
 
   const clickItemHandler = (e) => {
     history.push(e.target.getAttribute("data-location"));
     setGameState(PAGE_STATE.PREPARING);
   };
 
-  const gameInstances = useSelector(selectSortedInstances),
+  const tasks = useSelector(selectSortedTasks),
     dispatch = useDispatch(),
     [setGameState] = [
       (pageState) =>
         dispatch(setPageState({ newState: pageState })),
     ];
 
-  useFetchData(() => getItems(`?ordering=-date_created&private=false|owner=${user.id}`), setItems)
 
   return (
     <Switch>
-      {makeRoutesToInstances(gameInstances, url)}
+      {makeRoutesToInstances(tasks, url)}
       <Route path={url}>
         <Box className="templateA">
           <section className={`gridElement ${classes.description}`}>
@@ -75,7 +77,7 @@ export const GamesPage = () => {
           </aside>
 
           <Switch>
-            {makeRoutesToSelectors(gameInstances, url)}
+            {makeRoutesToSelectors(tasks, url)}
           </Switch>
         </Box>
       </Route>
@@ -83,10 +85,10 @@ export const GamesPage = () => {
   );
 };
 
-const makeRoutesToInstances = (gameInstances, url) => Object.keys(gameInstances).reduce(
+const makeRoutesToInstances = (tasks, url) => Object.keys(tasks).reduce(
   (combiner, type) => [
     ...combiner,
-    ...gameInstances[type].map((item) => (
+    ...tasks[type].map((item) => (
       <Route path={`${url}${GAME_TYPES_PATHS[type]}/${item.id}`} key={item.id}>
         <GameItemPage item={item}/>
       </Route>
@@ -95,14 +97,14 @@ const makeRoutesToInstances = (gameInstances, url) => Object.keys(gameInstances)
   []
 );
 
-const makeRoutesToSelectors = (gameInstances, url) => Object.keys(gameInstances).reduce(
+const makeRoutesToSelectors = (tasks, url) => Object.keys(tasks).reduce(
   (combiner, type) => [
     ...combiner,
     <Route path={url + GAME_TYPES_PATHS[type]} key={type}>
       <GamesSelector
         type={type}
         title={GAME_TYPES_PATHS[type]}
-        items={gameInstances[type]}
+        items={tasks[type]}
       />
     </Route>
   ],

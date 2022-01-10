@@ -15,14 +15,35 @@ import { selectPageState } from "../../../features/pageState/selectors";
 import { GameContext } from "../../../pages/contexts/GameContext";
 import { selectItem, selectSetById } from "../../../features/game/selectors";
 import { Add, Shuffle } from "@material-ui/icons";
-import { selectInstanceById } from "../../../features/gameInstances/selectors";
-import { cloneDeep } from "lodash";
+import { selectInstanceById } from "../../../features/task/selectors";
+import { cloneDeep, isEqual } from "lodash";
+import { deleteItemById } from "./handlers";
+import { useHistory } from "react-router-dom";
+import { paths } from "../../../vars/paths";
+import { Close } from "@material-ui/icons";
+import { Checkbox, FormControlLabel } from "@material-ui/core";
+import { changeTask } from "../../../api/tasks";
 
 const offsetTop = (x) => {
   return { marginTop: x };
 };
 
-export const Constructor = ({ taskId }) => {
+const MainControls = ({ closeHandler }) => {
+  return (
+    <Box className={`${classes.controls} ${classes.mainControls}`}>
+      <IconButton
+        className={`${classes.iconButton} ${classes.alignRight}`}
+        variant="contained"
+        color="orange"
+        onClick={closeHandler}
+      >
+        <Close />
+      </IconButton>
+    </Box>
+  );
+};
+
+export const Constructor = ({ taskId, closeHandler }) => {
   const gameState = useSelector(selectPageState);
 
   return (
@@ -32,11 +53,13 @@ export const Constructor = ({ taskId }) => {
 
         return gameState === PAGE_STATE.PREPARING ? (
           <Box className={`gridElement ${classes.forms}`}>
-            <TaskControlsForm itemId={taskId} />
+            <MainControls closeHandler={closeHandler} />
+            <TaskControlsForm itemId={taskId} closeHandler={closeHandler} />
           </Box>
         ) : (
           <>
             <Box className={`gridElement ${classes.forms}`}>
+              <MainControls closeHandler={closeHandler} />
               <SetControlsForm setId={setId} />
               <ItemChangeForm itemId={itemId} />
             </Box>
@@ -87,64 +110,113 @@ const makeHandleTextFieldChange = (formState, setFormState) => (event) => {
 };
 
 const TaskControlsForm = ({ itemId }) => {
-  const gameInstance = useSelector((state) =>
-      selectInstanceById(state, itemId)
-    ),
+  const history = useHistory();
+
+  const task = useSelector((state) => selectInstanceById(state, itemId)),
     [formState, setFormState] = useState({
-      name: gameInstance ? gameInstance.name : "",
-      description: gameInstance ? gameInstance.description : "",
+      name: task?.name && "",
+      description: task?.description && "",
       type: "",
-    });
+      private: task?.private && true,
+    }),
+    [isChanged, setIsChanged] = useState(false);
+
+  function changeState(state) {
+    const initialFormState = {
+      name: task?.name && "",
+      description: task?.description && "",
+      type: "",
+      private: task?.private && true,
+    };
+    if (!isEqual(initialFormState, state)) {
+      setIsChanged(true);
+      setFormState(state);
+    } else {
+      setIsChanged(false);
+      setFormState(state);
+    }
+  }
+
+  function handleSave() {
+    changeTask({ ...task, ...formState });
+  }
 
   useEffect(() => {
-    setFormState({
-      name: gameInstance ? gameInstance.name : "",
-      description: gameInstance ? gameInstance.description : "",
+    changeState({
+      name: task?.name && "",
+      description: task?.description && "",
       type: "",
+      private: formState?.private,
     });
   }, [itemId]);
 
+  function handleCheckboxChange() {
+    changeState({
+      ...formState,
+      private: !formState?.private,
+    });
+  }
+
   const handleTextFieldChange = makeHandleTextFieldChange(
     formState,
-    setFormState
+    changeState
   );
+
+  const redirectHandler = () => {
+    history.push(paths.gamesPage);
+  };
 
   return (
     <>
       <Box
-        className={classes.asideChangeForm}
+        className={`${classes.asideChangeForm}`}
         onChange={handleTextFieldChange}
         component="form"
       >
-        <Typography variant="body1" component="span">
-          {"Игра: "}
-        </Typography>
-        <Typography variant="h6" component="span">
-          {gameInstance.name}
-        </Typography>
-        <TextField
-          style={offsetTop("5px")}
-          className={`${classes.inputField}`}
-          label="Name"
-          value={formState.name}
-          inputProps={{ "data-value": "name" }}
-          multiline={true}
-          spellCheck={false}
-        />
-        <TextField
-          style={offsetTop("5px")}
-          className={`${classes.inputField} ${classes.offsetTop1X}`}
-          label="Description"
-          value={formState.description}
-          multiline={true}
-          spellCheck={false}
-          inputProps={{ "data-value": "description" }}
-        />
+        <Box>
+          <Typography variant="body1" component="span">
+            {"Игра: "}
+          </Typography>
+          <Typography variant="h6" component="span">
+            {task.name}
+          </Typography>
+          <TextField
+            style={offsetTop("5px")}
+            className={`${classes.inputField}`}
+            label="Name"
+            value={formState.name}
+            inputProps={{ "data-value": "name" }}
+            multiline={true}
+            spellCheck={false}
+          />
+          <TextField
+            style={offsetTop("5px")}
+            className={`${classes.inputField} ${classes.offsetTop1X}`}
+            label="Description"
+            value={formState.description}
+            multiline={true}
+            spellCheck={false}
+            inputProps={{ "data-value": "description" }}
+          />
+          <FormControlLabel
+            style={offsetTop("10px")}
+            control={
+              <Checkbox
+                checked={formState.private}
+                onChange={handleCheckboxChange}
+                inputProps={{ "aria-label": "Is private" }}
+              />
+            }
+            label="Is private"
+          />
+        </Box>
         <Box className={`${classes.offsetTop4X} ${classes.controls}`}>
           <IconButton
             className={classes.iconButton}
             variant="contained"
             color="primary"
+            disabled={!isChanged}
+            onClick={handleSave}
           >
             <SaveIcon />
           </IconButton>
@@ -152,6 +224,11 @@ const TaskControlsForm = ({ itemId }) => {
             className={classes.iconButton}
             variant="contained"
             color="red"
+            onClick={() => {
+              window.confirm(
+                `Вы точно хотите удалить задание "${task.name}"?`
+              ) && deleteItemById({ id: itemId, redirectHandler });
+            }}
           >
             <DeleteForeverIcon />
           </IconButton>

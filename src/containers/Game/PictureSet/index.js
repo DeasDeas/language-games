@@ -32,8 +32,8 @@ export const PictureSet = ({ set, animate, maxItems, inConstructorMode }) => {
   const dropSelection = !items.find((item) => item.id === selectedItem);
 
   useEffect(() => {
-    dropSelection && setSelectedItem("add-item");
-  }, [dropSelection]);
+    (dropSelection || !inConstructorMode) && setSelectedItem("add-item");
+  }, [dropSelection, inConstructorMode]);
 
   return (
     <GameContext.Consumer>

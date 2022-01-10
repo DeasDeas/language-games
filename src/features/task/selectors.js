@@ -1,18 +1,18 @@
 import { createSelector } from "reselect";
 import { GAME_TYPES } from "../../vars/consts";
 
-export const selectSortedInstances = createSelector(
-  (state) => state.gameInstances,
-  (gameInstances) => {
+export const selectSortedTasks = createSelector(
+  (state) => state.tasks,
+  (tasks) => {
     const accum = Object.values(GAME_TYPES).reduce((accum, item) => {
       accum[item] = [];
       return accum;
     }, {});
 
-    return gameInstances.allIds.reduce((combiner, itemId) => {
-      const item = gameInstances.byIds[itemId];
+    return tasks?.allIds.reduce((combiner, itemId) => {
+      const item = tasks?.byIds[itemId];
 
-      combiner[item.type].push(gameInstances.byIds[itemId])
+      combiner[item.game_type].push(tasks?.byIds[itemId])
 
       return combiner;
     }, {...accum});
@@ -20,4 +20,4 @@ export const selectSortedInstances = createSelector(
 );
 
 export const selectInstanceById = (state, itemId) =>
-  state.gameInstances.byIds[itemId];
+  state.tasks.byIds[itemId];

@@ -14,6 +14,6 @@ export const AUTH_ROUTES = {
 
 const apiPrefix = "/api";
 export const ITEMS_ROUTES = {
-	items: `${apiPrefix}/items/`,
-	itemTypes: `${apiPrefix}/item-types/`
+	items: `${apiPrefix}/tasks/`,
+	itemTypes: `${apiPrefix}/tasks-types/`
 }

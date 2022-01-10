@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import Box from "@material-ui/core/Box";
 import "../../styles.css";
 import classes from "./styles.module.css";
@@ -17,7 +17,6 @@ import { GameContext, defaultGameContext } from "../../contexts/GameContext";
 import { isEqual } from "lodash";
 import { Settings } from "@material-ui/icons";
 
-
 export const GameItemPage = ({ item }) => {
   const currentUser = useSelector(selectCurrentUser),
     dispatch = useDispatch(),
@@ -26,6 +25,7 @@ export const GameItemPage = ({ item }) => {
       (pageState) => dispatch(setPageState({ newState: pageState })),
     ],
     [animate, setAnimate] = useState(true),
+    [animateControls, setAnimateControls] = useState(false),
     [controlsAccess, setControlsAccess] = useState(false),
     [gameContext, setGameContext] = useState(defaultGameContext),
     setGameContextValue = (gameContextValue) => {
@@ -39,9 +39,11 @@ export const GameItemPage = ({ item }) => {
 
   const canAccessControls =
     currentUser &&
-    (currentUser.id === item.ownerId || currentUser.status === "staff");
+    (currentUser.id === item.owner || currentUser.status === "staff");
 
   const handleAccessControls = () => {
+    setAnimateControls(false);
+    setControlsAccess(!controlsAccess);
     setGameContext({
       ...gameContext,
       gameContextValue: {
@@ -49,7 +51,7 @@ export const GameItemPage = ({ item }) => {
         controlsAccess: !controlsAccess,
       },
     });
-    setControlsAccess(!controlsAccess);
+    setTimeout(() => setAnimateControls(true), ANIMATION_SPEED.QUICK);
   };
 
   return (
@@ -94,9 +96,23 @@ export const GameItemPage = ({ item }) => {
               <section className={controlsAccess ? "templateB" : "templateC"}>
                 {gameState === PAGE_STATE.PREPARING && (
                   <Box className={"gridElement"}>
-                    <Typography variant="h4" component="h1">
-                      {item.name}
-                    </Typography>
+                    <Box className={"rowContainer"}>
+                      <Typography variant="h4" component="h1">
+                        {item.name}
+                      </Typography>
+                      <Box className={"rowContainer"}>
+                        {!controlsAccess && canAccessControls && (
+                          <IconButton
+                            className={classes.constructorButton}
+                            variant="contained"
+                            color="orange"
+                            onClick={handleAccessControls}
+                          >
+                            <Settings />
+                          </IconButton>
+                        )}
+                      </Box>
+                    </Box>
                     <Typography variant="body1" component="p">
                       {item.description}
                     </Typography>
@@ -115,27 +131,26 @@ export const GameItemPage = ({ item }) => {
                       >
                         Начать игру
                       </Button>
-                      {canAccessControls && (
-                        <IconButton
-                          className={classes.constructorButton}
-                          style={{ position: "absolute" }}
-                          variant="contained"
-                          color="orange"
-                          onClick={handleAccessControls}
-                        >
-                          <Settings />
-                        </IconButton>
-                      )}
                     </Box>
                   </Box>
                 )}
                 {gameState !== PAGE_STATE.PREPARING && (
-                  <Game item={item} clickBackHandler={clickBackHandler} />
+                  <Game
+                    item={item}
+                    clickBackHandler={clickBackHandler}
+                    inConstructor={controlsAccess}
+                    constructorVisibilityProps={{controlsAccess, canAccessControls, handleAccessControls}}
+                  />
                 )}
                 {controlsAccess && (
-                  <Box className={`${classes.constructor}`}>
-                    <Constructor taskId={item.id} />
-                  </Box>
+                  <Fade in={animateControls}>
+                    <Box className={`${classes.constructor}`}>
+                      <Constructor
+                        taskId={item.id}
+                        closeHandler={handleAccessControls}
+                      />
+                    </Box>
+                  </Fade>
                 )}
               </section>
             </Fade>

@@ -7,14 +7,14 @@ const initialState = {
 };
 
 const index = createSlice({
-  name: "gameInstances",
+  name: "tasks",
   initialState,
   reducers: {
-    setItems: (state, action) => {
+    setTask: (state, action) => {
       state = action.payload
       return state
     },
-    addItemInstance: (state, action) => {
+    addTask: (state, action) => {
       const {id} = action.payload
       state.byIds[id] = {...action.payload, isNew:true};
       state.allIds.unshift(id)
@@ -24,4 +24,4 @@ const index = createSlice({
 });
 
 export default index.reducer;
-export const { setItems, addItemInstance } = index.actions;
+export const { setTask, addTask } = index.actions;

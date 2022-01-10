@@ -173,7 +173,6 @@
                 display: flex;
                 justify-content: center;
                 width: 100%;
-                height: 100%;
                 background: var(--secondary-bg-color);
                 bottom: 0;
                 left: 0;
@@ -184,6 +183,7 @@
                 text-align: center;
                 transition: all .5s ease-in;
                 user-select: none;
+                min-height: 100%;
 
                 &Inner {
                     display: inline-block;
@@ -247,17 +247,27 @@
             transform: translate(50%, -50%);
         }
     }
+}
 
-    .controls {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
+.controls {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 
-        .iconButton {
-            width: 36.5px;
-            height: 36.5px;
-        }
+    .iconButton {
+        width: 36.5px;
+        height: 36.5px;
     }
+
+    .alignRight {
+        align-self: end;
+    }
+}
+
+.mainControls {
+    display: flex;
+    direction: revert;
+    flex-direction: column;
 }
 
 .inputField {

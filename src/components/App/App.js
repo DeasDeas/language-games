@@ -10,7 +10,7 @@ import { MainPage } from "../../pages/MainPage";
 import { GamesPage } from "../../pages/GamesPage";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import {AuthPage} from "../../pages/AuthPage";
+import { AuthPage } from "../../pages/AuthPage";
 
 const App = () => {
   return (

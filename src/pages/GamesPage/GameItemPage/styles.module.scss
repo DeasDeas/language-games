@@ -12,14 +12,20 @@
     width: 100%;
 }
 
-.constructorButton {
-    position: absolute;
-    width: 36.5px;
-    height: 36.5px;
-    top: 20px;
-    right: 20px;
+.constructorWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.constructorButton {
+    width: 36.5px;
+    height: 36.5px;
+}
+
+.constructorButton + .constructorButton {
+    margin-left: 10px;
+}
 .constructor {
     display: grid;
     grid-template:
